@@ -1,0 +1,53 @@
+body
+{
+
+background-color:black;
+color : white;
+}
+input[type=submit] {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 10px 12px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+img {
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+}
+a { display: block; }
+.column {
+  float: left;
+  width: 15%;
+  padding: 5px;
+}
+
+
+.row::after {
+  content: "";
+  
+  clear: both;
+  display: table;
+}
+
+/* unvisited link */
+a:link {
+  color: red;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+}
+
+#home
+{
+	  font-style:italics;
+	  color:white;
+}
