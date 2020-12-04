@@ -12,25 +12,6 @@
 <link href="/css/MainStyles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h1><i>LIVE EAT LOVE</i></h1>
-	<form action="/Search" method="post">
-		<p><label for="categories">Choose a cuisine:</label>
-		 <select id="categories" name="categories">
-		    <option value=""></option>
-			<option value="American">American</option>
-			<option value="Asian Fusion">Asian Fusion</option>
-			<option value="Barbeque">Barbeque</option>
-			<option value="Canadian ">Canadian</option>
-		</select> </p>
-			<p>	<label for="location">Choose a City:</label> 
-				<select id="location" name="location" required>
-				 <option value=""></option>
-			<option value="Detroit">Detroit</option>
-			<option value="New York City">New York City</option>
-			<option value="Chicago">Chicago</option>
-			<option value="Seattle ">Seattle</option>
-		</select> </p>
-	<p>	<input type="submit" value="Search"> </p>
-	</form>
+<h1>Welcome ${username}</h1>
 </body>
 </html>
