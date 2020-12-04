@@ -13,5 +13,15 @@
 </head>
 <body>
 <h1>Welcome ${username}</h1>
+<br />
+<div class="row">
+<c:forEach var="business" items="${businesses}">
+  <div class="column">
+<img src="${business.image_url}"><br />
+<a href="${business.url}">${business.name}</a>
+  </div>
+  </c:forEach>
+</div>
+
 </body>
 </html>

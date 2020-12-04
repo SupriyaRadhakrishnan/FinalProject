@@ -16,14 +16,14 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
-	private long groupId;
+	private String groupId;
 	
 	public User()
 	{
 		
 	}
 	
-	public User(long id, String username, String email, String password, long groupId) {
+	public User(long id, String username, String email, String password, String groupId) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -65,11 +65,11 @@ public class User {
 		this.password = password;
 	}
 
-	public long getGroupId() {
+	public String getGroupId() {
 		return groupId;
 	}
 
-	public void setGroupId(long groupId) {
+	public void setGroupId(String groupId) {
 		this.groupId = groupId;
 	}
 

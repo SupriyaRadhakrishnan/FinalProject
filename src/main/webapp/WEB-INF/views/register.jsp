@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>Register</h1>
+<p>${message}</p>
 <form method="post" action="/register">
 <label for="username">Name</label>
 <input type="text" name="username" required> <br />
