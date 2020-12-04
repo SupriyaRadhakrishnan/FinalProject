@@ -3,6 +3,8 @@ package co.grandcircus.YelpFusion.Controller;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import co.grandcircus.YelpFusion.Model.Business;
 import co.grandcircus.YelpFusion.Model.BusinessResponse;
+import co.grandcircus.YelpFusion.Model.User;
+import co.grandcircus.YelpFusion.Service.UserRepository;
 import co.grandcircus.YelpFusion.Service.YelpFusionService;
 
 @Controller
@@ -20,13 +24,59 @@ public class YelpFusionController {
 	@Autowired
 	private YelpFusionService yfs;
 	
+
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	private UserRepository urep;
+	
+	
 	private BusinessResponse br = new BusinessResponse() ;
+	private String message ="";
 	
 	@GetMapping("/")
-	public String index()
+	public String index(Model model)
 	{
-	    br = new BusinessResponse();
-		return"index";
+		model.addAttribute("message",message);
+		message ="";
+	   return "login";
+	}
+	@GetMapping("/register")
+	public String register()
+	{
+	   return "register";
+	}
+	
+	@PostMapping("/register")
+	public String register(User user,Model model)
+	{
+		//System.out.println(user.getEmail()+" " +user.getUsername()+" "+user.getPassword());
+		urep.save(user);
+		model.addAttribute("user",user);
+		session.setAttribute("username", user.getUsername());
+		session.setAttribute("userid", user.getId());
+		model.addAttribute("username",session.getAttribute("username"));		
+	    return "index";
+	}
+	
+	@PostMapping("/login")
+	public String login(String email,String password,Model model)
+	{
+		System.out.println(email +" "+ password);
+		User user = urep.findByEmail(email);
+		if(user == null || !user.getPassword().equals(password))
+		{
+		 System.out.println("Invalid user details");
+		message = "Invalid Login Details";
+		 return "redirect:/";
+		}
+		else {
+			session.setAttribute("username", user.getUsername());
+			session.setAttribute("userid", user.getId());
+	    model.addAttribute("username",session.getAttribute("username"));		
+		return "index";
+		}
 	}
 	
 	@PostMapping("/Search")
