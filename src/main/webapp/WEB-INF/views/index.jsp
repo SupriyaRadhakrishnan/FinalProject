@@ -21,8 +21,8 @@
 </c:forEach>
 <form method="post" action="/creategroup">
 <h2>Create a Group</h2>
-<label for="groupname">Group Name</label> <input type="text" name ="groupname"><br />
-<label for="email">Members(Enter group members email)</label><textarea name ="email" rows="4" cols="50"></textarea><br />
+<label for="groupname">Group Name</label> <input type="text" name ="groupname" required><br />
+<label for="email">Members(Enter group members email)</label><textarea name ="email" rows="4" cols="50" required></textarea><br />
 <input type="submit" value="Create group">
 </form>
 </body>

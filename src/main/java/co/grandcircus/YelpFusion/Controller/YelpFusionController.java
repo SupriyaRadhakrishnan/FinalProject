@@ -36,12 +36,6 @@ public class YelpFusionController {
 		message ="";
 	   return "login";
 	}
-
-	
-	
-	
-	
-
 	@GetMapping("/index")
 	public String goHome(Model model) {
 		String email = (String) session.getAttribute("useremail");

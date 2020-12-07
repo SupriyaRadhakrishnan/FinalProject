@@ -97,7 +97,24 @@ public class ModelController {
 		event.setEventadmin(user.getId());
 
 		 erep.save(event);
-		
+		 if(pricerange.equals("1"))
+		 {
+			 pricerange = "1";
+		 }
+		 else if(pricerange.equals("2"))
+		 {
+			 pricerange ="1,2";
+		 }
+		 else if(pricerange.equals("3"))
+		 {
+			 pricerange ="1,2,3";
+		 }
+		 else
+		 {
+			 pricerange ="1,2,3,4";
+		 }
+	
+	System.out.println("pricerange" + pricerange);
 		for(String c: category)
 		{
 			 bs = yfs.getBusinesses(event.getEventcity(), c,pricerange);
@@ -155,8 +172,7 @@ for(Activity activity : activitylist)
 	List<Business> businesslist = activity.getBusiness();
 	for(Business business : businesslist)
 	{
-		System.out.println("inside business" + business.getName());
-		System.out.println("inside business" + favbusinessname + " " + nfavbusinessname);
+	
 		if(business.getName().equals(favbusinessname) && (favbusinessname) !=null)
 		{
 			System.out.println("inside favs");
@@ -170,7 +186,7 @@ for(Activity activity : activitylist)
 		brep.save(business);
 	}
 	}
-}          
+}          model.addAttribute("event",event);	
 		return "eventdetails";
 	}
 
