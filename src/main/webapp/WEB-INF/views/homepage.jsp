@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
+<img src="http://j.b5z.net/i/u/2017580/i/Events1.png" style="width:200px;height:75px;">
 <a id ="home" href="/">Return To Search</a>
 <br />
 <div class="row">

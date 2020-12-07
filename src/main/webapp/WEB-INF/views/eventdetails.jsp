@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
+<img src="http://j.b5z.net/i/u/2017580/i/Events1.png" style="width:200px;height:75px;">
 <h2>${fn:toUpperCase(event.getEventname())}</h2>
 <c:forEach var="activity" items="${event.getActivity()}">
 <c:out value="${fn:toUpperCase(activity.activityname)}"></c:out> <br />
