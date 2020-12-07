@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
+<img src="http://j.b5z.net/i/u/2017580/i/Events1.png" style="width:200px;height:75px;">
+<form action="/index">
+         <button type="submit">Go Home</button>
+      </form>
 <h2>${groupinfo.getGroupname()}</h2>
 <h3>Events</h3>
 <c:forEach var="e" items="${event}">

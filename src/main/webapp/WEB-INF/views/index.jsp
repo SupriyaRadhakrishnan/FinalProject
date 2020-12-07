@@ -12,6 +12,7 @@
 <link href="/css/MainStyles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<img src="http://j.b5z.net/i/u/2017580/i/Events1.png" style="width:200px;height:75px;">
 <h1>Welcome ${username}</h1>
 <br />
 <h2> Your Groups</h2>
