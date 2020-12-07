@@ -27,6 +27,13 @@
 <label for="eventname">Event Name</label> <input type="text" name ="eventname" required><br />
 <label for="eventdescription">Event Description</label><textarea name ="eventdescription" rows="4" cols="50"></textarea><br />
 <label for="eventdate">Event Date</label> <input type="date" name ="eventdate" required><br />
+  <label for="pricerange">Price</label>
+  <select id="pricerange" name="pricerange">
+    <option value="1">$</option>
+    <option value="2">$$</option>
+    <option value="New York City">New York City</option>
+  </select>
+  
   <label for="eventcity">Choose a City:</label>
   <select id="eventcity" name="eventcity">
     <option value="Detroit">Detroit</option>
@@ -42,5 +49,7 @@
 </div>
 <input type="submit" value="Create Event">
 </form>
+
+
 </body>
 </html>

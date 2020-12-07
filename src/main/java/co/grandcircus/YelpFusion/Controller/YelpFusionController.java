@@ -42,6 +42,10 @@ public class YelpFusionController {
 		message ="";
 	   return "login";
 	}
+	
+	
+	
+	
 	@GetMapping("/register") // Registration Page
 	public String register(Model model)
 	{
