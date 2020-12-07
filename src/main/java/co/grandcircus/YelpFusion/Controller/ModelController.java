@@ -154,9 +154,46 @@ public class ModelController {
 	}
 	
 	@PostMapping("/savevotes")
-	public String savevotes(Business business,@RequestParam(required = false) String restaurants_favorite,@RequestParam(required = false) String restaurants_notfavorite,@RequestParam(required = false) String parks_favorite,@RequestParam(required = false) String parks_notfavorite, Model model)
+	public String savevotes(@RequestParam(value ="eventid") long eventid,@RequestParam(required = false) String restaurants_favorite,@RequestParam(required = false) String restaurants_notfavorite,@RequestParam(required = false) String parks_favorite,@RequestParam(required = false) String parks_notfavorite, Model model)
 	{
-					System.out.println(restaurants_favorite+ " "+restaurants_notfavorite + " " +parks_favorite+ " " +parks_notfavorite);    
+
+Event event = erep.findById(eventid).get();
+        List<Activity> activitylist = event.getActivity();
+        String favbusinessname ="";
+        String nfavbusinessname ="";
+for(Activity activity : activitylist)
+{
+	String activityname = activity.getActivityname();
+	if(activityname.equals("restaurants")){
+		 favbusinessname = restaurants_favorite;
+		 nfavbusinessname = restaurants_notfavorite;
+	}
+	else if(activityname.equals("parks"))
+	{
+		favbusinessname = parks_favorite;
+		 nfavbusinessname = parks_notfavorite;
+	}
+	if((activityname+"_favorite") !=null || (activityname+"_notfavorite")!=null )
+	{
+	List<Business> businesslist = activity.getBusiness();
+	for(Business business : businesslist)
+	{
+		System.out.println("inside business" + business.getName());
+		System.out.println("inside business" + favbusinessname + " " + nfavbusinessname);
+		if(business.getName().equals(favbusinessname) && (favbusinessname) !=null)
+		{
+			System.out.println("inside favs");
+		business.setFavourite(business.getFavourite()+1);
+		}
+		if(business.getName().equals(nfavbusinessname) && (nfavbusinessname) !=null)
+		{
+			System.out.println("inside notfavs");
+		business.setNotfavourite(business.getNotfavourite()+1);
+		}
+		brep.save(business);
+	}
+	}
+}          
 		return "eventdetails";
 	}
 
