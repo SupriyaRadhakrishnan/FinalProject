@@ -1,21 +1,15 @@
 package co.grandcircus.YelpFusion.Controller;
 
-import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import co.grandcircus.YelpFusion.Model.Business;
-import co.grandcircus.YelpFusion.Model.BusinessResponse;
-import co.grandcircus.YelpFusion.Model.User;
-import co.grandcircus.YelpFusion.Service.UserRepository;
-import co.grandcircus.YelpFusion.Service.YelpFusionService;
+import co.grandcircus.YelpFusion.Model.*;
+import co.grandcircus.YelpFusion.Service.*;
 
 @Controller
 public class YelpFusionController {
