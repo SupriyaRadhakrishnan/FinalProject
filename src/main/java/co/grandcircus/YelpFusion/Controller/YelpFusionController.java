@@ -35,32 +35,43 @@ public class YelpFusionController {
 	private BusinessResponse br = new BusinessResponse() ;
 	private String message ="";
 	
-	@GetMapping("/")
+	@GetMapping("/") 
 	public String index(Model model)
 	{
 		model.addAttribute("message",message);
 		message ="";
 	   return "login";
 	}
-	@GetMapping("/register")
-	public String register()
+	@GetMapping("/register") // Registration Page
+	public String register(Model model)
 	{
+		model.addAttribute("message",message);
+		message = "";
 	   return "register";
 	}
 	
-	@PostMapping("/register")
+	@PostMapping("/register") // Checking if Registration Details are valid,If yes saves it to DB,else redirects to register page with a message
 	public String register(User user,Model model)
 	{
-		//System.out.println(user.getEmail()+" " +user.getUsername()+" "+user.getPassword());
+		User u = urep.findByEmail(user.getEmail());
+		if(u!= null)
+		{
+			message = "Email id already exists";
+			 return "redirect:/register";
+		}
+		else {
 		urep.save(user);
 		model.addAttribute("user",user);
 		session.setAttribute("username", user.getUsername());
 		session.setAttribute("userid", user.getId());
-		model.addAttribute("username",session.getAttribute("username"));		
+		session.setAttribute("useremail", user.getEmail());
+		model.addAttribute("groups",user.getUsergroup());	
+		model.addAttribute("username",session.getAttribute("username"));	
 	    return "index";
+		}
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/login") // Check if the login details are valid, else redirects to login page with a message
 	public String login(String email,String password,Model model)
 	{
 		System.out.println(email +" "+ password);
@@ -72,37 +83,13 @@ public class YelpFusionController {
 		 return "redirect:/";
 		}
 		else {
+			session.setAttribute("useremail", user.getEmail());
 			session.setAttribute("username", user.getUsername());
 			session.setAttribute("userid", user.getId());
-	    model.addAttribute("username",session.getAttribute("username"));		
+			model.addAttribute("groups",user.getUsergroup());
+	    model.addAttribute("username",session.getAttribute("username"));
 		return "index";
 		}
 	}
-	
-	@PostMapping("/Search")
-	public String search(String location,String categories,Model model)
-	{
-		br = yfs.getBusinesses(location,categories);
-		System.out.println(br);
-	    model.addAttribute("businesses",br.getBusinesses());
-		return "homepage";
-	}
-	
-
-	@PostMapping("/random")
-	public String random(Model model)
-	{
-		Random rand = new Random(); 
-		List<Business> bs = br.getBusinesses();
-		System.out.println(" br.getBusinesses() :" +  br.getBusinesses());
-        Business businesschoice = bs.get(rand.nextInt(bs.size())); 
-        System.out.println("businesschoice :" + businesschoice);
-	    model.addAttribute("businesschoice",businesschoice);
-	    model.addAttribute("businesses",br.getBusinesses());
-		return "homepage";
-	}
-	
-	
-	
-	
+		
 }

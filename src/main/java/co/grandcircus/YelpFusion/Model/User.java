@@ -1,13 +1,10 @@
 package co.grandcircus.YelpFusion.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
-@Table(name="user")
 public class User {
 	
 	@Id
@@ -16,20 +13,27 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
-	private long groupId;
+	
+	@ManyToMany
+	@JoinTable(
+			  name = "group_user", 
+			  joinColumns = @JoinColumn(name = "id"), 
+			  inverseJoinColumns = @JoinColumn(name = "groupid"))
+	private List<UserGroup> usergroup;
+	
 	
 	public User()
 	{
 		
 	}
 	
-	public User(long id, String username, String email, String password, long groupId) {
+	public User(long id, String username, String email, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.groupId = groupId;
+		
 	}
 	
 
@@ -65,12 +69,12 @@ public class User {
 		this.password = password;
 	}
 
-	public long getGroupId() {
-		return groupId;
+	public List<UserGroup> getUsergroup() {
+		return usergroup;
 	}
 
-	public void setGroupId(long groupId) {
-		this.groupId = groupId;
+	public void setUsergroup(List<UserGroup> usergroup) {
+		this.usergroup = usergroup;
 	}
 
 }
