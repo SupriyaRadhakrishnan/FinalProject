@@ -30,7 +30,8 @@
   <select id="pricerange" name="pricerange">
     <option value="1">$</option>
     <option value="2">$$</option>
-    <option value="New York City">New York City</option>
+    <option value="3">$$$</option>
+    <option value="4">$$$$</option>
   </select>
   
   <label for="eventcity">Choose a City:</label>

@@ -86,7 +86,7 @@ public class ModelController {
 	
 	
 	@PostMapping("/createevent") 
-	public String createevent(@RequestParam(value = "groupid") long groupid,Event event,@RequestParam(value = "category") List<String> category, Model model) {
+	public String createevent(String pricerange,@RequestParam(value = "groupid") long groupid,Event event,@RequestParam(value = "category") List<String> category, Model model) {
 		User user = urep.findByEmail((String) session.getAttribute("useremail"));
 		List<Business> listofBusiness = new ArrayList<>();
 		List<Activity> activitylist = new ArrayList<>();
@@ -100,7 +100,7 @@ public class ModelController {
 		
 		for(String c: category)
 		{
-			 bs = yfs.getBusinesses(event.getEventcity(), c);
+			 bs = yfs.getBusinesses(event.getEventcity(), c,pricerange);
 			Activity activity = new Activity();
 			 activity.setActivityname(c);	
 			 activity.setBusiness(bs.getBusinesses());
