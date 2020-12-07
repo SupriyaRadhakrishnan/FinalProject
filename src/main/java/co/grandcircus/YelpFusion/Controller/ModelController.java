@@ -1,38 +1,15 @@
 package co.grandcircus.YelpFusion.Controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import co.grandcircus.YelpFusion.Model.Activity;
-import co.grandcircus.YelpFusion.Model.Business;
-import co.grandcircus.YelpFusion.Model.BusinessResponse;
-import co.grandcircus.YelpFusion.Model.Event;
-import co.grandcircus.YelpFusion.Model.User;
-import co.grandcircus.YelpFusion.Model.UserGroup;
-import co.grandcircus.YelpFusion.Service.ActivityRepository;
-import co.grandcircus.YelpFusion.Service.BusinessRepository;
-import co.grandcircus.YelpFusion.Service.EventRepository;
-import co.grandcircus.YelpFusion.Service.UserGroupRepository;
-import co.grandcircus.YelpFusion.Service.UserRepository;
-import co.grandcircus.YelpFusion.Service.YelpFusionService;
+import org.springframework.web.bind.annotation.*;
+import co.grandcircus.YelpFusion.Model.*;
+import co.grandcircus.YelpFusion.Service.*;
 
 
 @Controller

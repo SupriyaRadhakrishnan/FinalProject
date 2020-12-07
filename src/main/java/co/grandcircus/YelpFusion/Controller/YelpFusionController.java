@@ -36,6 +36,14 @@ public class YelpFusionController {
 		message ="";
 	   return "login";
 	}
+	@GetMapping("/index")
+	public String goHome(Model model) {
+		String email = (String) session.getAttribute("useremail");
+		User user = urep.findByEmail(email);
+		model.addAttribute("username",session.getAttribute("username"));
+		model.addAttribute("groups",user.getUsergroup());
+		return "index";
+	}
 	@GetMapping("/register") // Registration Page
 	public String register(Model model)
 	{
