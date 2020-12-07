@@ -12,43 +12,36 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
-
-	<h2>${fn:toUpperCase(event.getEventname())}</h2>
+<img src="http://j.b5z.net/i/u/2017580/i/Events1.png" style="width:200px;height:75px;">
+<a href="/index"> <button type="submit">Go Home</button> </a> 
+<h2>${fn:toUpperCase(event.getEventname())}</h2>
+	<form method ="post" action ="/savevotes">
+	<input type="number" name ="eventid" value="${event.getEventid()}" hidden=true/>
 	<c:forEach var="activity" items="${event.getActivity()}">
 		<c:out value="${fn:toUpperCase(activity.activityname)}"></c:out>
-		<br />
-		<div class="row">
-			<c:forEach var="business" items="${activity.getBusiness()}">
-			<label for="favorite">Favorite </label>	<input type="radio" name="favorite">
-				<label for="notfavorite">Not Favorite </label>
-				<input type="radio" name="notfavorite">
-				<div class="column">
-					<img src="${business.image_url}"><br /> <a
-						href="${business.url}">${business.name}</a>
-
-
-				</div>
-			</c:forEach>
-		</div>
-	</c:forEach>
-
-<img src="http://j.b5z.net/i/u/2017580/i/Events1.png" style="width:200px;height:75px;">
-<form action="/index">
-         <button type="submit">Go Home</button>
-      </form>
-<h2>${fn:toUpperCase(event.getEventname())}</h2>
-<c:forEach var="activity" items="${event.getActivity()}">
-<c:out value="${fn:toUpperCase(activity.activityname)}"></c:out> <br />
-<div class="row">
+		<c:set var="activityname" value="${activity.activityname}"/>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
 <c:forEach var="business" items="${activity.getBusiness()}">
-  <div class="column">
-<img src="${business.image_url}"><br />
-<a href="${business.url}">${business.name}</a>
-  </div>
-  </c:forEach>
-</div>
+<tr>
+<td><label for="${activityname}_favorite">Favorite </label>	<input type="radio" name="${activityname}_favorite" value="${business.name}"><br />Votes :${business.favourite} </td>
+<td><img src="${business.image_url}"><br /> 
+<a href="${business.url}">${business.name}</a></td>
+<td><label for="${activityname}_notfavorite">Not Favorite </label><input type="radio" name="${activityname}_notfavorite" value="${business.name}"> <br /> Votes :${business.notfavourite} </td>
+</tr>
 </c:forEach>
-
+</tbody>
+</table>
+	</c:forEach>
+	<input type="submit" value="Save votes"/>
+	</form>	
 </body>
 </html>
 
