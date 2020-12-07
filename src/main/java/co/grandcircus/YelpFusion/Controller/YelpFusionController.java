@@ -64,9 +64,9 @@ public class YelpFusionController {
 		model.addAttribute("user",user);
 		session.setAttribute("username", user.getUsername());
 		session.setAttribute("userid", user.getId());
+		session.setAttribute("useremail", user.getEmail());
+		model.addAttribute("groups",user.getUsergroup());	
 		model.addAttribute("username",session.getAttribute("username"));	
-	    br = yfs.getBusinesses("MI","bbq");
-	    model.addAttribute("businesses",br.getBusinesses());
 	    return "index";
 		}
 	}
@@ -83,11 +83,11 @@ public class YelpFusionController {
 		 return "redirect:/";
 		}
 		else {
+			session.setAttribute("useremail", user.getEmail());
 			session.setAttribute("username", user.getUsername());
 			session.setAttribute("userid", user.getId());
+			model.addAttribute("groups",user.getUsergroup());
 	    model.addAttribute("username",session.getAttribute("username"));
-	    br = yfs.getBusinesses("MI","bbq");
-	    model.addAttribute("businesses",br.getBusinesses());
 		return "index";
 		}
 	}

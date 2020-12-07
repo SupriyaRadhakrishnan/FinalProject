@@ -2,26 +2,70 @@ package co.grandcircus.YelpFusion.Model;
 
 import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="business")
 public class Business {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long businessid;
 	private String id;
-	private String alias;
 	private String name;
 	private String image_url;
-	private boolean is_closed;
 	private String url;
+	@Transient
+	private boolean is_closed;
+	@Transient
 	private int review_count;
+	@Transient
 	private String phone;
+	@Transient
 	private String display_phone;
+	@Transient
 	private double distance;
+	@Transient
+	private String alias;
+	@Transient
 	private double rating;
+	@Transient
 	private List<Category> categories;
+	@Transient
 	private Coordinates coordinates;
+	@Transient
 	private List<String> transactions;
+	@Transient
 	private Location location;
+	private int favourite;
+	private int notfavourite;
+	
+	@ManyToOne
+	private Activity activity;
 	
 	public Business(){
 
+	}
+	public Business(long businessid, String id, String name, String image_url, String url, boolean is_closed,
+			int review_count, String phone, String display_phone, double distance, String alias, double rating,
+			List<Category> categories, Coordinates coordinates, List<String> transactions, Location location) {
+		super();
+		this.businessid = businessid;
+		this.id = id;
+		this.name = name;
+		this.image_url = image_url;
+		this.url = url;
+		this.is_closed = is_closed;
+		this.review_count = review_count;
+		this.phone = phone;
+		this.display_phone = display_phone;
+		this.distance = distance;
+		this.alias = alias;
+		this.rating = rating;
+		this.categories = categories;
+		this.coordinates = coordinates;
+		this.transactions = transactions;
+		this.location = location;
 	}
 
 	public String getId() {
@@ -142,6 +186,33 @@ public class Business {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public long getBusinessid() {
+		return businessid;
+	}
+
+	public void setBusinessid(long businessid) {
+		this.businessid = businessid;
+	}
+
+	public int getFavourite() {
+		return favourite;
+	}
+	public void setFavourite(int favourite) {
+		this.favourite = favourite;
+	}
+	public int getNotfavourite() {
+		return notfavourite;
+	}
+	public void setNotfavourite(int notfavourite) {
+		this.notfavourite = notfavourite;
+	}
+	public Activity getActivity() {
+		return activity;
+	}
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 }

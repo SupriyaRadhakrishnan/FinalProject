@@ -14,14 +14,15 @@
 <body>
 <h1>Welcome ${username}</h1>
 <br />
-<div class="row">
-<c:forEach var="business" items="${businesses}">
-  <div class="column">
-<img src="${business.image_url}"><br />
-<a href="${business.url}">${business.name}</a>
-  </div>
-  </c:forEach>
-</div>
-
+<h2> Your Groups</h2>
+<c:forEach var="group" items="${groups}">
+<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a><br />
+</c:forEach>
+<form method="post" action="/creategroup">
+<h2>Create a Group</h2>
+<label for="groupname">Group Name</label> <input type="text" name ="groupname"><br />
+<label for="email">Members(Enter group members email)</label><textarea name ="email" rows="4" cols="50"></textarea><br />
+<input type="submit" value="Create group">
+</form>
 </body>
 </html>

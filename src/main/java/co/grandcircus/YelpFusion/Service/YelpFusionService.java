@@ -18,7 +18,7 @@ public class YelpFusionService {
 	public BusinessResponse getBusinesses(String location,String categories)
 	{
 		System.out.println("Hello");
-		String url = "https://api.yelp.com/v3/businesses/search?term=restaurants&location={location}&radius=40000";
+		String url = "https://api.yelp.com/v3/businesses/search?&location={location}&radius=40000";
 		if(!categories.isEmpty())
 		{
 			url += "&categories={categories}";
