@@ -25,7 +25,7 @@
 <h2>Create a Event</h2>
 <label for="eventname">Event Name</label> <input type="text" name ="eventname" required><br />
 <label for="eventdescription">Event Description</label><textarea name ="eventdescription" rows="4" cols="50"></textarea><br />
-<label for="eventdate">Event Date</label> <input type="date" name ="eventdate" required><br />
+<label for="eventdate">Event Date</label> <input type="date" placeholder="yyyy-mm-dd" name ="eventdate" required><br />
   <label for="pricerange">Price</label>
   <select id="pricerange" name="pricerange">
     <option value="1">$</option>
