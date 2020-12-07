@@ -20,20 +20,29 @@
 	<form method ="post" action ="/savevotes">
 	<c:forEach var="activity" items="${event.getActivity()}">
 		<c:out value="${fn:toUpperCase(activity.activityname)}"></c:out>
-		<br />
-		<div class="row">	
-			<c:forEach var="business" items="${activity.getBusiness()}">
-				<div class="column">
-				<label for="favorite">Favorite </label>	<input type="radio" name="favorite">
-					<img src="${business.image_url}"><br /> <a
-						href="${business.url}">${business.name}</a>
-					<label for="notfavorite">Not Favorite </label><input type="radio" name="notfavorite">
-				</div>
-			</c:forEach>
-		</div>
+		<c:set var="activityname" value="${activity.activityname}"/>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<c:forEach var="business" items="${activity.getBusiness()}">
+<tr>
+<td><label for="${activityname}_favorite">Favorite </label>	<input type="radio" name="${activityname}_favorite" value="${business.name}"></td>
+<td><img src="${business.image_url}"><br /> 
+<a href="${business.url}">${business.name}</a></td>
+<td><label for="${activityname}_notfavorite">Not Favorite </label><input type="radio" name="${activityname}_notfavorite" value="${business.name}"></td>
+</tr>
+</c:forEach>
+</tbody>
+</table>
 	</c:forEach>
+	<input type="submit" value="Save votes"/>
 	</form>	
-
 </body>
 </html>
 

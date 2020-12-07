@@ -149,10 +149,15 @@ public class ModelController {
 		System.out.println("inside eventdetails");
 		Event e = erep.findById(id).orElse(null);
 		System.out.println("event " + e);
-				model.addAttribute("event",e);
-				
+				model.addAttribute("event",e);	
 		return "eventdetails";
 	}
 	
+	@PostMapping("/savevotes")
+	public String savevotes(Business business,@RequestParam(required = false) String restaurants_favorite,@RequestParam(required = false) String restaurants_notfavorite,@RequestParam(required = false) String parks_favorite,@RequestParam(required = false) String parks_notfavorite, Model model)
+	{
+					System.out.println(restaurants_favorite+ " "+restaurants_notfavorite + " " +parks_favorite+ " " +parks_notfavorite);    
+		return "eventdetails";
+	}
 
 }
