@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!-- user log in page. asks user for email and password -->
 <html>
 <head>
 <meta charset="UTF-8">

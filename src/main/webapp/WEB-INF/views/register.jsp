@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<!-- registration page, asks user for name, email and password -->
 <html>
 <head>
 <meta charset="ISO-8859-1">

@@ -107,7 +107,9 @@ public class YelpFusionController {
 
 		return "redirect:/";
 	}
-
+	/* 
+	 * mapping for user log out
+	 */
 	@GetMapping("/logout")
 	public String logout() {
 		session.invalidate();

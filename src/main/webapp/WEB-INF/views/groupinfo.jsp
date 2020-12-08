@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
+<!-- group information, including members and group events -->
 <html>
 <head>
 <meta charset="ISO-8859-1">

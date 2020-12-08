@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
+<!-- user home page, includes ability to create a group and and allows users to view groups -->
 <html>
 <head>
 <meta charset="UTF-8">

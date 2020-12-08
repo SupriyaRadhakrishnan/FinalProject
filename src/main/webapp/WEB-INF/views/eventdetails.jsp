@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
+<!-- voting home, allows users to vote for places they want to do and don't want to go -->
 <html>
 <head>
 <meta charset="UTF-8">
