@@ -114,11 +114,6 @@ public class Event {
 		this.activity = activity;
 	}
 
-	@Override
-	public String toString() {
-		return "Event [eventid=" + eventid + ", eventname=" + eventname + ", eventdescription=" + eventdescription
-				+ ", eventdate=" + eventdate + ", eventcity=" + eventcity + ", eventadmin=" + eventadmin
-				+ ", usergroup=" + usergroup + ", activity=" + activity + "]";
-	}
+	
 
 }
