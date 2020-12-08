@@ -83,7 +83,7 @@ public class ModelController {
 		
 		UserGroup userGroup = ugrep.findById(groupid).get();
 		String memberinput[] = email.split(";");
-		List<User> memberlist = new ArrayList<User>();
+		List<User> memberlist = userGroup.getUser();
 		
 		for (int i = 0; i < memberinput.length; i++) {
 			System.out.println(memberinput[0]);
@@ -92,9 +92,7 @@ public class ModelController {
 				List<UserGroup> currentmembergroups = memberuser.getUsergroup();
 				currentmembergroups.add(userGroup);
 				memberuser.setUsergroup(currentmembergroups);
-				memberlist.add(memberuser);
-				
-				
+				memberlist.add(memberuser);		
 			}
 		}
 		ugrep.save(userGroup);
