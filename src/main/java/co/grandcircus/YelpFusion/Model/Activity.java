@@ -12,27 +12,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="activity")
+@Table(name = "activity")
 public class Activity {
-	
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long activityid;
 	private String activityname;
-	
+
 	@OneToMany(mappedBy = "activity")
 	private List<Business> business;
-	
 
 	@ManyToOne
 	private Event event;
-	
-	public Activity()
-	{
-		
+
+	public Activity() {
+
 	}
+
 	public Activity(long activityid, String activityname, List<Business> business) {
 		super();
 		this.activityid = activityid;
@@ -63,11 +60,21 @@ public class Activity {
 	public void setBusiness(List<Business> business) {
 		this.business = business;
 	}
+
 	public Event getEvent() {
 		return event;
 	}
+
 	public void setEvent(Event event) {
 		this.event = event;
 	}
 
+	@Override
+	public String toString() {
+		return "Activity [activityid=" + activityid + ", activityname=" + activityname + ", business=" + business
+				+ ", event=" + event + "]";
+	}
+
+	
+	
 }

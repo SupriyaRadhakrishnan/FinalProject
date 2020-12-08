@@ -5,9 +5,9 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="business")
+@Table(name = "business")
 public class Business {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long businessid;
@@ -39,13 +39,14 @@ public class Business {
 	private Location location;
 	private int favourite;
 	private int notfavourite;
-	
+
 	@ManyToOne
 	private Activity activity;
-	
-	public Business(){
+
+	public Business() {
 
 	}
+
 	public Business(long businessid, String id, String name, String image_url, String url, boolean is_closed,
 			int review_count, String phone, String display_phone, double distance, String alias, double rating,
 			List<Category> categories, Coordinates coordinates, List<String> transactions, Location location) {
@@ -199,20 +200,35 @@ public class Business {
 	public int getFavourite() {
 		return favourite;
 	}
+
 	public void setFavourite(int favourite) {
 		this.favourite = favourite;
 	}
+
 	public int getNotfavourite() {
 		return notfavourite;
 	}
+
 	public void setNotfavourite(int notfavourite) {
 		this.notfavourite = notfavourite;
 	}
+
 	public Activity getActivity() {
 		return activity;
 	}
+
 	public void setActivity(Activity activity) {
 		this.activity = activity;
+	}
+
+	@Override
+	public String toString() {
+		return "Business [businessid=" + businessid + ", id=" + id + ", name=" + name + ", image_url=" + image_url
+				+ ", url=" + url + ", is_closed=" + is_closed + ", review_count=" + review_count + ", phone=" + phone
+				+ ", display_phone=" + display_phone + ", distance=" + distance + ", alias=" + alias + ", rating="
+				+ rating + ", categories=" + categories + ", coordinates=" + coordinates + ", transactions="
+				+ transactions + ", location=" + location + ", favourite=" + favourite + ", notfavourite="
+				+ notfavourite + ", activity=" + activity + "]";
 	}
 
 }

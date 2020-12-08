@@ -28,11 +28,10 @@ public class Event {
 	private String eventcity;
 	private long eventadmin;
 
-
 	@ManyToOne
 	@JoinColumn(name = "groupid")
 	private UserGroup usergroup;
-	
+
 	@OneToMany(mappedBy = "event")
 	private List<Activity> activity;
 
@@ -40,7 +39,8 @@ public class Event {
 
 	}
 
-	public Event(long eventid, String eventname, String eventdescription, Date eventdate, long eventadmin, UserGroup usergroup) {
+	public Event(long eventid, String eventname, String eventdescription, Date eventdate, long eventadmin,
+			UserGroup usergroup) {
 		super();
 		this.eventid = eventid;
 		this.eventname = eventname;
@@ -112,6 +112,13 @@ public class Event {
 
 	public void setActivity(List<Activity> activity) {
 		this.activity = activity;
+	}
+
+	@Override
+	public String toString() {
+		return "Event [eventid=" + eventid + ", eventname=" + eventname + ", eventdescription=" + eventdescription
+				+ ", eventdate=" + eventdate + ", eventcity=" + eventcity + ", eventadmin=" + eventadmin
+				+ ", usergroup=" + usergroup + ", activity=" + activity + "]";
 	}
 
 }

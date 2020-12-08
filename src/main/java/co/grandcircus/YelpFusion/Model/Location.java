@@ -3,8 +3,7 @@ package co.grandcircus.YelpFusion.Model;
 import java.util.List;
 
 public class Location {
-	
-	
+
 	private String address1;
 	private String address2;
 	private String address3;
@@ -13,8 +12,8 @@ public class Location {
 	private String country;
 	private String state;
 	private List<String> display_address;
-	
-	public Location(){
+
+	public Location() {
 
 	}
 
@@ -81,6 +80,12 @@ public class Location {
 	public void setDisplay_address(List<String> display_address) {
 		this.display_address = display_address;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Location [address1=" + address1 + ", address2=" + address2 + ", address3=" + address3 + ", city=" + city
+				+ ", zip_code=" + zip_code + ", country=" + country + ", state=" + state + ", display_address="
+				+ display_address + "]";
+	}
 
 }

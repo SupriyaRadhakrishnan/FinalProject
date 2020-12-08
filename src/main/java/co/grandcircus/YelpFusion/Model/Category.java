@@ -1,11 +1,11 @@
 package co.grandcircus.YelpFusion.Model;
 
 public class Category {
-	
+
 	private String alias;
 	private String title;
-	
-	public Category(){
+
+	public Category() {
 
 	}
 
@@ -25,4 +25,11 @@ public class Category {
 		this.title = title;
 	}
 
+	@Override
+	public String toString() {
+		return "Category [alias=" + alias + ", title=" + title + "]";
+	}
+
+	
+	
 }

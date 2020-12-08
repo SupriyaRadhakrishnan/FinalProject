@@ -6,36 +6,30 @@ import javax.persistence.*;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String username;
 	private String email;
 	private String password;
-	
+
 	@ManyToMany
-	@JoinTable(
-			  name = "group_user", 
-			  joinColumns = @JoinColumn(name = "id"), 
-			  inverseJoinColumns = @JoinColumn(name = "groupid"))
+	@JoinTable(name = "group_user", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "groupid"))
 	private List<UserGroup> usergroup;
-	
-	
-	public User()
-	{
-		
+
+	public User() {
+
 	}
-	
+
 	public User(long id, String username, String email, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		
+
 	}
-	
 
 	public long getId() {
 		return id;
@@ -75,6 +69,12 @@ public class User {
 
 	public void setUsergroup(List<UserGroup> usergroup) {
 		this.usergroup = usergroup;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", usergroup=" + usergroup + "]";
 	}
 
 }
