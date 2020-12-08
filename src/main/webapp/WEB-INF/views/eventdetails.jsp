@@ -25,6 +25,7 @@
 	<a href="/logout"><button type="submit">Logout</button></a>
 	<h2>${fn:toUpperCase(event.getEventname())}</h2>
 	<form method="post" action="/savevotes">
+	<input type="text" name="groupid" hidden=true value="${groupid}"/>
 		<input type="number" name="eventid" value="${event.getEventid()}"
 			hidden=true />
 		<c:forEach var="activity" items="${event.getActivity()}">

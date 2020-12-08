@@ -161,7 +161,7 @@ public class ModelController {
 	}
 
 	@PostMapping("/savevotes")
-	public String savevotes(@RequestParam(value = "eventid") long eventid,
+	public String savevotes(@RequestParam(value = "eventid") long eventid,long groupid,
 			@RequestParam(required = false) String restaurants_favorite,
 			@RequestParam(required = false) String restaurants_notfavorite,
 			@RequestParam(required = false) String parks_favorite,
@@ -196,6 +196,7 @@ public class ModelController {
 				}
 			}
 		}
+		model.addAttribute("groupid",groupid);
 		model.addAttribute("event", event);
 		return "eventdetails";
 	}
