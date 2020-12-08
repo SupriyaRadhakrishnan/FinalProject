@@ -62,13 +62,6 @@ public class UserGroup {
 	public void setUser(List<User> user) {
 		this.user = user;
 	}
-
-	@Override
-	public String toString() {
-		return "UserGroup [groupid=" + groupid + ", groupname=" + groupname + ", events=" + events + ", user=" + user
-				+ "]";
-	}
-
 	
 	
 }

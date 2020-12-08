@@ -71,10 +71,4 @@ public class User {
 		this.usergroup = usergroup;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", usergroup=" + usergroup + "]";
-	}
-
 }

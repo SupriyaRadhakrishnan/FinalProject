@@ -221,14 +221,4 @@ public class Business {
 		this.activity = activity;
 	}
 
-	@Override
-	public String toString() {
-		return "Business [businessid=" + businessid + ", id=" + id + ", name=" + name + ", image_url=" + image_url
-				+ ", url=" + url + ", is_closed=" + is_closed + ", review_count=" + review_count + ", phone=" + phone
-				+ ", display_phone=" + display_phone + ", distance=" + distance + ", alias=" + alias + ", rating="
-				+ rating + ", categories=" + categories + ", coordinates=" + coordinates + ", transactions="
-				+ transactions + ", location=" + location + ", favourite=" + favourite + ", notfavourite="
-				+ notfavourite + ", activity=" + activity + "]";
-	}
-
 }

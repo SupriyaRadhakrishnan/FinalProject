@@ -17,17 +17,35 @@
 
 <h2>${groupinfo.getGroupname()}</h2>
 <h3>Events</h3>
+
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Date</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
 <c:forEach var="e" items="${event}">
-<a href="/eventdetails?event=${e.getEventid()}">${e.getEventname()}</a>
+<tr>
+<td><a href="/eventdetails?event=${e.getEventid()}&group=${groupinfo.getGroupid()}">${e.getEventname()}</a></td>
+<td>${e.getEventdate()}</td>
+<c:if test ="${e.getEventadmin() eq  userid}">
+<td><a href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"><button type="submit">Remove</button></a></td>
+</c:if>
+</tr>
 </c:forEach>
+</tbody> 
+</table>
 <form method="post" action="/createevent">
-<input type="number" hidden=true name ="groupid" value="${groupinfo.getGroupid()}">
+<input hidden=true name ="groupid" value="${groupinfo.getGroupid()}">
 <h2>Create a Event</h2>
 <label for="eventname">Event Name</label> <input type="text" name ="eventname" required><br />
 <label for="eventdescription">Event Description</label><textarea name ="eventdescription" rows="4" cols="50"></textarea><br />
 <label for="eventdate">Event Date</label> <input type="date" placeholder="yyyy-mm-dd" name ="eventdate" required><br />
   <label for="pricerange">Price</label>
-  <select id="pricerange" name="pricerange">
+  <select id="pricerange" name="pricerange" value="1" required>
     <option value="1">$</option>
     <option value="2">$$</option>
     <option value="3">$$$</option>

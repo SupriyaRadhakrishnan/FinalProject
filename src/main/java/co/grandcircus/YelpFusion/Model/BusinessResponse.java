@@ -18,11 +18,5 @@ public class BusinessResponse {
 		this.businesses = businesses;
 	}
 
-	@Override
-	public String toString() {
-		return "BusinessResponse [businesses=" + businesses + "]";
-	}
-	
-	
 
 }

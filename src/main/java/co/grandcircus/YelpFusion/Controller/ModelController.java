@@ -104,29 +104,34 @@ public class ModelController {
 		System.out.println("pricerange" + pricerange);
 		for (String c : category) {
 			bs = yfs.getBusinesses(event.getEventcity(), c, pricerange);
+			if(bs != null) {
 			Activity activity = new Activity();
 			activity.setActivityname(c);
 			activity.setBusiness(bs.getBusinesses());
 			activitylist.add(activity);
 			activity.setEvent(event);
 			arep.save(activity);
+			
 			for (Business business : bs.getBusinesses()) {
 				listofBusiness.add(business);
 				business.setActivity(activity);
 				brep.save(business);
 			}
-
 		}
+		}
+		model.addAttribute("groupinfo", groupinfo);
 		model.addAttribute("event", groupinfo.getEvents());
+		model.addAttribute("userid",session.getAttribute("userid"));
 		return "groupinfo";
 	}
 
 	@GetMapping("/eventdetails")
-	public String eventdetails(@RequestParam(value = "event") long id, Model model) {
+	public String eventdetails(@RequestParam(value = "event") long id, @RequestParam(value = "group") long groupid,Model model) {
 		System.out.println("inside eventdetails");
 		Event e = erep.findById(id).orElse(null);
 		System.out.println("event " + e);
 		model.addAttribute("event", e);
+		model.addAttribute("groupid",groupid);
 		return "eventdetails";
 	}
 
@@ -168,6 +173,31 @@ public class ModelController {
 		}
 		model.addAttribute("event", event);
 		return "eventdetails";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteevent(@RequestParam(value = "eventdetails") long id,@RequestParam(value = "group") long groupid,Model model) {
+		UserGroup usergroup = ugrep.findById(groupid).get();
+		Event event = erep.findById(id).get();
+		List<Activity> activitylist = event.getActivity();
+		for(Activity activity : activitylist)
+		{
+			if(activity != null) {
+			List<Business> businesslist = activity.getBusiness();
+			for(Business business: businesslist)
+			{
+				if(business!=null)
+				brep.deleteById(business.getBusinessid());
+			}
+			}
+			arep.deleteById(activity.getActivityid());
+	}
+	
+		erep.deleteById(id);
+		model.addAttribute("groupinfo",usergroup);
+		model.addAttribute("event", usergroup.getEvents());
+		model.addAttribute("userid",session.getAttribute("userid"));
+		return "groupinfo";
 	}
 
 }

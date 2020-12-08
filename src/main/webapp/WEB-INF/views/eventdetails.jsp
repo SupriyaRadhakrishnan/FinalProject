@@ -13,7 +13,8 @@
 </head>
 <body>
 <img src="http://j.b5z.net/i/u/2017580/i/Events1.png" style="width:200px;height:75px;">
-<a href="/index"> <button type="submit">Go Home</button> </a> 
+<a href="/index"> <button type="submit">Go Home</button> </a> <br />
+<a href="/groupdetails/${groupid}"> <button type="submit">Go to group</button> </a> 
 <h2>${fn:toUpperCase(event.getEventname())}</h2>
 	<form method ="post" action ="/savevotes">
 	<input type="number" name ="eventid" value="${event.getEventid()}" hidden=true/>
