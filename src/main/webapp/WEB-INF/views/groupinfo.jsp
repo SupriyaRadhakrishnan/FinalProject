@@ -19,6 +19,13 @@
 	</a>
 
 	<h2>${groupinfo.getGroupname()}</h2>
+	<h3>Add Members</h3>
+	<form method="post" action="/addmembers">
+		<label for="email">Members(Enter group members email)</label>
+		<textarea name="email" rows="4" cols="50" required></textarea>
+		<input type="text" name="groupid" hidden=true value="${groupinfo.getGroupid()}"/>
+		<br /> <input type="submit" value="Add to Group">
+	</form>
 	<h3>Events</h3>
 
 	<table>

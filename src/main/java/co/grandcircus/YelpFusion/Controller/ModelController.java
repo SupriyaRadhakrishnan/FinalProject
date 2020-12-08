@@ -78,6 +78,33 @@ public class ModelController {
 		return "groupinfo";
 	}
 
+	@PostMapping("/addmembers")
+	public String addmembers(@RequestParam(value = "groupid") long groupid, String email, Model model) {
+		
+		UserGroup userGroup = ugrep.findById(groupid).get();
+		String memberinput[] = email.split(";");
+		List<User> memberlist = new ArrayList<User>();
+		
+		for (int i = 0; i < memberinput.length; i++) {
+			System.out.println(memberinput[0]);
+			User memberuser = urep.findByEmail(memberinput[i]);
+			if (memberuser != null) {
+				List<UserGroup> currentmembergroups = memberuser.getUsergroup();
+				currentmembergroups.add(userGroup);
+				memberuser.setUsergroup(currentmembergroups);
+				memberlist.add(memberuser);
+				
+				
+			}
+		}
+		ugrep.save(userGroup);
+		model.addAttribute("groupinfo", userGroup);
+		model.addAttribute("event", userGroup.getEvents());
+		model.addAttribute("userid", session.getAttribute("userid"));
+
+		return "groupinfo";
+	}
+	
 	@PostMapping("/createevent")
 	public String createevent(String pricerange, @RequestParam(value = "groupid") long groupid, Event event,
 			@RequestParam(value = "category") List<String> category, Model model) {
