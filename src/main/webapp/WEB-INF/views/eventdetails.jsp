@@ -21,6 +21,7 @@
 	<a href="/groupdetails/${groupid}">
 		<button type="submit">Go to group</button>
 	</a>
+	<a href="/logout"><button type="submit">Logout</button></a>
 	<h2>${fn:toUpperCase(event.getEventname())}</h2>
 	<form method="post" action="/savevotes">
 		<input type="number" name="eventid" value="${event.getEventid()}"

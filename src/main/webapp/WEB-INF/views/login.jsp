@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="">
+<meta charset="UTF-8">
 <title>Events | Login</title>
 </head>
 <body>
@@ -12,9 +12,9 @@
 	<h1>Events</h1>
 	<p>${message}</p>
 	<form method="post" action="/login">
-		<label for="email">Email</label> <input type="text" name="email"><br />
-		<label for="password">Password</label> <input type="password"
-			name="password"><br /> <input type="submit" value="Log In"><br />
+		<label for="email">Email</label> <input type="text" name="email" required><br />
+		<label for="password">Password</label> <input type="password" 
+			name="password" required><br /> <input type="submit" value="Log In"><br />
 	</form>
 	<a href="/register">SignUp</a>
 </body>

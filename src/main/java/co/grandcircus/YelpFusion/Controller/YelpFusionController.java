@@ -13,12 +13,12 @@ import co.grandcircus.YelpFusion.Service.*;
 
 @Controller
 public class YelpFusionController {
-	
+
 	@Autowired
 	HttpSession session;
 
 	@Autowired
-	private UserRepository urep;	
+	private UserRepository urep;
 
 	private String message = "";
 
@@ -59,21 +59,21 @@ public class YelpFusionController {
 			message = "Email already exists";
 			return "redirect:/register";
 		} else {
-			
+
 			String pw = user.getPassword();
 			pw = pwEncoder.encode(pw);
 			user.setPassword(pw);
 			urep.save(user);
-			
+
 			model.addAttribute("user", user);
-			
+
 			session.setAttribute("username", user.getUsername());
 			session.setAttribute("userid", user.getId());
 			session.setAttribute("useremail", user.getEmail());
-			
+
 			model.addAttribute("groups", user.getUsergroup());
 			model.addAttribute("username", session.getAttribute("username"));
-			
+
 			return "index";
 		}
 	}
@@ -90,25 +90,30 @@ public class YelpFusionController {
 		if (user != null) {
 
 			if (pwEncoder.matches(password, user.getPassword())) {
-				
+
 				session.setAttribute("useremail", user.getEmail());
 				session.setAttribute("username", user.getUsername());
 				session.setAttribute("userid", user.getId());
-				
+
 				model.addAttribute("groups", user.getUsergroup());
 				model.addAttribute("username", session.getAttribute("username"));
 				return "index";
 			}
 		}
-		
-		session.invalidate();
-		
+
 		System.out.println("Invalid user details");
-		
+
 		message = "Invalid Login Details";
-		
+
 		return "redirect:/";
 	}
+
+	@GetMapping("/logout")
+	public String logout() {
+		session.invalidate();
+
+		return "redirect:/";
+
+	}
+
 }
-
-
