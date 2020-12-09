@@ -90,10 +90,10 @@
 			placeholder="yyyy-mm-dd" min="${todayString }" name="eventdate"  required><br /> <label
 			for="pricerange">Price</label> <select id="pricerange"
 			name="pricerange" value="1" required>
-			<option value="1">$</option>
-			<option value="2">$$</option>
-			<option value="3">$$$</option>
-			<option value="4">$$$$</option>
+			<option value="1">$ - Inexpensive</option>
+			<option value="2">$$ - Moderate</option>
+			<option value="3">$$$ - Pricey</option>
+			<option value="4">$$$$ - Ultra High End</option>
 		</select> <label for="eventcity">Choose a City:</label> <select id="eventcity"
 			name="eventcity">
 			<option value="Detroit">Detroit</option>

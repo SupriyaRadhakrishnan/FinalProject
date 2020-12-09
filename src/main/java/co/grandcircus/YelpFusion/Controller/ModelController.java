@@ -122,6 +122,8 @@ public class ModelController {
 		event.setEventadmin(user.getId());
 
 		erep.save(event);
+		// The API call uses the param pricerange="1,2,3,4"
+		// or as a single number eg. pricerange=3
 		if (pricerange.equals("1")) {
 			pricerange = "1";
 		} else if (pricerange.equals("2")) {
