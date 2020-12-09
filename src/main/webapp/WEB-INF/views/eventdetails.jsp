@@ -29,12 +29,12 @@
 		<input type="number" name="eventid" value="${event.getEventid()}"
 			hidden=true />
 		<c:forEach var="activity" items="${event.getActivity()}">
-			<c:out value="${fn:toUpperCase(activity.activityname)}"></c:out>
 			<c:set var="activityname" value="${activity.activityname}" />
 			<table>
 				<thead>
 					<tr>
-						<th></th>
+					    <th></th>
+						<th><c:out value="${fn:toUpperCase(activity.activityname)}"></c:out></th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -42,6 +42,7 @@
 				<tbody>
 					<c:forEach var="business" items="${activity.getBusiness()}">
 						<tr>
+						<td></td>
 							<td><label for="${activityname}_favorite">Favorite </label>
 								<input type="radio" name="${activityname}_favorite"
 								value="${business.name}"><br />Votes
@@ -56,7 +57,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</c:forEach>
+		</c:forEach> <br />
 		<input type="submit" value="Save votes" />
 	</form>
 </body>
