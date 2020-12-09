@@ -27,8 +27,10 @@
 </script>
 </head>
 <body>
-	<img src="/images/events.png"
-		style="width: 200px; height: 75px;">
+	<img src="/images/logo.png" style="vertical-align:middle; margin:0px 50px;">
+	<br /><br /><br />
+	<br /><br /><br />	
+	<br /><br /><br />
 	<a href="/index">
 		<button type="submit">Go Home</button>
 	</a>

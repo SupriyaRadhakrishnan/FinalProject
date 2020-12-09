@@ -9,15 +9,16 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
-	<img src="/images/events.png"
-		style="width: 200px; height: 75px;">
-		<br /><br /><br />
+	<img src="/images/logo.png" style="vertical-align:middle; margin:0px 50px;">
+	<br /><br /><br />
+	<br /><br /><br />	
+	<br /><br /><br />
 	<h1>Register</h1>
 	<p>${message}</p>
 	<form method="post" action="/register">
 		<label for="username">Name</label> <input type="text" name="username"
 			required> <br /> <label for="email">Email</label> <input
-			type="text" name="email" required><br /> <label
+			type="email" name="email" required><br /> <label
 			for="password">Password</label> <input type="password"
 			name="password" required><br /> <input type="submit"
 			value="Register">

@@ -13,8 +13,10 @@
 <link href="/css/MainStyles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<img src="http://j.b5z.net/i/u/2017580/i/Events1.png"
-		style="width: 200px; height: 75px;">
+	<img src="/images/logo.png" style="vertical-align:middle; margin:0px 50px;">
+	<br /><br /><br />
+	<br /><br /><br />	
+	<br /><br /><br />
 	<a href="/logout"><button type="submit">Logout</button></a>
 
 	<h1>Welcome ${username}</h1>

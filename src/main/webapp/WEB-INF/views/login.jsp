@@ -10,12 +10,13 @@
 <title>Events | Login</title>
 </head>
 <body>
-	<img src="/images/events.png"
-		style="width: 200px; height: 75px;"><br />
+	<img src="/images/logo.png" style="vertical-align:middle; margin:0px 50px;">
+	<br /><br /><br />
+	<br /><br /><br />	
 	<br /><br /><br />
 	<p>${message}</p>
 	<form method="post" action="/login">
-		<label for="email">Email</label> <input type="text" name="email" required><br />
+		<label for="email">Email</label> <input type="email" name="email" required><br />
 		<label for="password">Password</label> <input type="password" 
 			name="password" required><br /> <input type="submit" value="Log In"><br />
 	</form>

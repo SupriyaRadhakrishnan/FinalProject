@@ -13,12 +13,13 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
-	<img src="/images/events.png"
-		style="width: 200px; height: 75px;">
+	<img src="/images/logo.png" style="vertical-align:middle; margin:0px 50px;">
+	<br /><br /><br />
+	<br /><br /><br />	
+	<br /><br /><br />
 	<a href="/index">
 		<button type="submit">Go Home</button>
 	</a>
-	<br />
 	<a href="/groupdetails/${groupid}">
 		<button type="submit">Go to group</button>
 	</a>
