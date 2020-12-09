@@ -30,7 +30,7 @@
 			hidden=true />
 		<c:forEach var="activity" items="${event.getActivity()}">
 			<c:set var="activityname" value="${activity.activityname}" />
-			<table>
+			<table id="businesslist">
 				<thead>
 					<tr>
 					    <th></th>

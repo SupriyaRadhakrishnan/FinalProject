@@ -49,7 +49,7 @@
 			value="Add to Group">
 	</form>
 	<h3>Events</h3>
-
+	<div>
 	<table>
 		<thead>
 			<tr>
@@ -73,15 +73,13 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-
 	</table>
+</div>
+<div>
 	<form method="post" action="/createevent" onsubmit="return validate()">
-
-	</table><br />
-	<form method="post" action="/createevent">
-
 		<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
-		<h2>Create a Event</h2>
+	
+		<h2>Create an Event</h2>
 		<label for="eventname">Event Name</label> <input type="text"
 			name="eventname" required><br /> <label
 			for="eventdescription">Event Description</label>
@@ -108,7 +106,7 @@
 		</div>
 		<input type="submit" value="Create Event">
 	</form>
-
+</div>
 
 </body>
 </html>
