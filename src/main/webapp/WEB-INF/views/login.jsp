@@ -20,6 +20,6 @@
 		<label for="password">Password</label> <input type="password" 
 			name="password" required><br /> <input type="submit" value="Log In"><br />
 	</form>
-	<a href="/register">SignUp</a>
+	<a href="/register"><button>Register</button></a>
 </body>
 </html>

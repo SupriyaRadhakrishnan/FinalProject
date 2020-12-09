@@ -8,9 +8,19 @@ input[type=submit] {
   background-color: red;
   border: none;
   color: white;
-  padding: 10px 12px;
+  padding: 5px 6px;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 2px 1px;
+  cursor: pointer;
+}
+
+button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 5px 6px;
+  text-decoration: none;
+  margin: 2px 1px;
   cursor: pointer;
 }
 
