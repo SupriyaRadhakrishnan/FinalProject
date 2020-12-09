@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 <script>
 	function validate() {
-		let boxes = document.querySelectorAll("#category_checkbox input[type=checkbox]");
+		let boxes = document
+				.querySelectorAll("#category_checkbox input[type=checkbox]");
 		for (let i = 0; i < boxes.length; i++) {
 			console.log(boxes[i].checked);
 			if (boxes[i].checked) {
@@ -22,15 +23,22 @@
 		}
 		alert("You didn't check a category");
 		return false;
-		
+
 	}
 </script>
 </head>
 <body>
-	<img src="/images/logo.png" style="vertical-align:middle; margin:0px 50px;">
-	<br /><br /><br />
-	<br /><br /><br />	
-	<br /><br /><br />
+	<img src="/images/logo.png"
+		style="vertical-align: middle; margin: 0px 50px;">
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 	<a href="/index">
 		<button type="submit">Go Home</button>
 	</a>
@@ -52,68 +60,70 @@
 	</form>
 	<h3>Events</h3>
 	<div>
-	<table>
-		<thead>
-			<tr>
-				<th>Event</th>
-				<th>Date</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="e" items="${event}">
+		<table>
+			<thead>
 				<tr>
-					<td><a
-						href="/eventdetails?event=${e.getEventid()}&group=${groupinfo.getGroupid()}">${e.getEventname()}</a></td>
-					<td>${e.getEventdate()}</td>
-					<c:if test="${e.getEventadmin() eq  userid}">
-						<td><a
-							href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"
-							onclick="if (!confirm('Are you sure you want to remove the event?')) return false;"><button
-									type="submit">Remove</button></a></td>
-					</c:if>
+					<th>Event</th>
+					<th>Date</th>
+					<th></th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-</div>
-<div>
-	<form method="post" action="/createevent" onsubmit="return validate()">
-		<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
-	
-		<h2>Create an Event</h2>
-		<label for="eventname">Event Name</label> <input type="text"
-			name="eventname" required><br /> <label
-			for="eventdescription">Event Description</label>
-		<textarea name="eventdescription" rows="4" cols="50"></textarea>
-		<br /> <label for="eventdate">Event Date</label> <input type="date"
-			placeholder="yyyy-mm-dd" min="${todayString }" name="eventdate"  required><br /> <label
-			for="pricerange">Price</label> <select id="pricerange"
-			name="pricerange" value="1" required>
-			<option value="1">$ - Inexpensive</option>
-			<option value="2">$$ - Moderate</option>
-			<option value="3">$$$ - Pricey</option>
-			<option value="4">$$$$ - Ultra High End</option>
-		</select> <label for="eventcity">Choose a City:</label> <select id="eventcity"
-			name="eventcity">
-			<option value="Chicago">Chicago</option>
-			<option value="Detroit">Detroit</option>
-			<option value="Los Angeles">Los Angeles</option>	
-			<option value="Miami">Miami</option>	
-			<option value="New York City">New York City</option>	
-			<option value="Seattle">Seattle</option>	
-			<option value="Toronto">Toronto</option>
-			<option value="Washington DC">Washington DC</option>			
-		</select>
-		<div id="category_checkbox">
-			<label for="category">Event Category:</label> <input type="checkbox"
-				id="restaurants" value="restaurants" name="category"> <label
-				for="restaurants">Restaurants</label> <input type="checkbox"
-				id="parks" value="parks" name="category"> <label for="parks">Parks</label>
-		</div>
-		<input type="submit" value="Create Event">
-	</form>
-</div>
+			</thead>
+			<tbody>
+				<c:forEach var="e" items="${event}">
+					<tr>
+						<td><a
+							href="/eventdetails?event=${e.getEventid()}&group=${groupinfo.getGroupid()}">${e.getEventname()}</a></td>
+						<td>${e.getEventdate()}</td>
+						<c:if test="${e.getEventadmin() eq  userid}">
+							<td><a
+								href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"
+								onclick="if (!confirm('Are you sure you want to remove the event?')) return false;"><button
+										type="submit">Remove</button></a></td>
+						</c:if>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<form method="post" action="/createevent" onsubmit="return validate()">
+			<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
+
+			<h2>Create an Event</h2>
+			<label for="eventname">Event Name</label> <input type="text"
+				name="eventname" required><br /> <label
+				for="eventdescription">Event Description</label>
+			<textarea name="eventdescription" rows="4" cols="50"></textarea>
+			<br /> <label for="eventdate">Event Date</label> <input type="date"
+				placeholder="yyyy-mm-dd" min="${todayString }" name="eventdate"
+				pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)"
+				required><br /> <label for="pricerange">Price</label> <select
+				id="pricerange" name="pricerange" value="1" required>
+				<option value="1">$ - Inexpensive</option>
+				<option value="2">$$ - Moderate</option>
+				<option value="3">$$$ - Pricey</option>
+				<option value="4">$$$$ - Ultra High End</option>
+			</select> <label for="eventcity">Choose a City:</label> <select id="eventcity"
+				name="eventcity">
+				<option value="Chicago">Chicago</option>
+				<option value="Detroit">Detroit</option>
+				<option value="Los Angeles">Los Angeles</option>
+				<option value="Miami">Miami</option>
+				<option value="New York City">New York City</option>
+				<option value="Seattle">Seattle</option>
+				<option value="Toronto">Toronto</option>
+				<option value="Washington DC">Washington DC</option>
+			</select>
+			<div id="category_checkbox">
+				<label for="category">Event Category:</label> <input type="checkbox"
+					id="restaurants" value="restaurants" name="category"> <label
+					for="restaurants">Restaurants</label> <input type="checkbox"
+					id="parks" value="parks" name="category"> <label
+					for="parks">Parks</label>
+			</div>
+			<input type="submit" value="Create Event">
+		</form>
+	</div>
 
 </body>
 </html>
