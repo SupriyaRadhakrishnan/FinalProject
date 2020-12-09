@@ -2,9 +2,11 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- user log in page. asks user for email and password -->
+
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/css/MainStyles.css">
 <title>Events | Login</title>
 </head>
 <body>

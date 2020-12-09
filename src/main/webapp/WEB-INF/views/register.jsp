@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Events | Register</title>
+<link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
 	<img src="/images/events.png"
