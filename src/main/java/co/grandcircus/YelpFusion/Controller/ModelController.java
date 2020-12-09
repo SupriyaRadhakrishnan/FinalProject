@@ -35,11 +35,15 @@ public class ModelController {
 
 	@Autowired
 	private BusinessRepository brep;
-	
+	// below 3 lines are used to set the min date to current date(restricts creating an event in past date).
 	static Date todayDate = Calendar.getInstance().getTime(); 
 	static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
 	private static String todayString = formatter.format(todayDate);
-
+    /*
+     * This method uses the post method form to create a group,it will add valid email to the 
+     * group member list and writes the data to the usergroup and the user tables.Return back to the
+     * same page(index.jsp) with the new group name added in the list of groups.
+     */
 	@PostMapping("/creategroup")
 	public String creategroup(String email, String groupname, Model model) {
 		User user = urep.findByEmail((String) session.getAttribute("useremail"));
@@ -73,7 +77,10 @@ public class ModelController {
 		return "/index";
 
 	}
-
+	 /*
+     * This method uses the group id in PathVariable to fetch info from table and and adds it to the model.
+     * It returns to the groupinfo page displaying the members,events and allows you to create an event.
+     */
 	@GetMapping("/groupdetails/{groupid}")
 	public String groupdetails(@PathVariable("groupid") long id, Model model) {
 
@@ -83,7 +90,11 @@ public class ModelController {
 		model.addAttribute("todayString", todayString);
 		return "groupinfo";
 	}
-
+    /*
+     * This method uses the post method form to update a group,it will add valid email to the already existing 
+     * group member list and updates the data to the usergroup and the user tables.Return back to the
+     * same page(index.jsp) with the new group members added.
+     */
 	@PostMapping("/addmembers")
 	public String addmembers(@RequestParam(value = "groupid") long groupid, String email, Model model) {
 		
@@ -108,7 +119,11 @@ public class ModelController {
 		model.addAttribute("todayString", todayString);
 		return "groupinfo";
 	}
-	
+    /*
+     * This method uses the post method form to create an event.It creates an entry for each of the activity
+     * and business related to the activity(category).It creates an entry in event, activity and business tables.
+     * It returns to the same page(groupinfo.jsp) with the new event listed. 
+     */
 	@PostMapping("/createevent")
 	public String createevent(String pricerange, @RequestParam(value = "groupid") long groupid, Event event,
 			@RequestParam(value = "category") List<String> category, Model model) {
@@ -158,7 +173,10 @@ public class ModelController {
 		model.addAttribute("userid",session.getAttribute("userid"));
 		return "groupinfo";
 	}
-
+	 /*
+     * This method uses the event id to fetch info from table and and adds it to the model.
+     * It returns to the eventdetails page displaying the category and the related business along with voting option.
+     */
 	@GetMapping("/eventdetails")
 	public String eventdetails(@RequestParam(value = "event") long id, @RequestParam(value = "group") long groupid,Model model) {
 		System.out.println("inside eventdetails");
@@ -168,7 +186,10 @@ public class ModelController {
 		model.addAttribute("groupid",groupid);
 		return "eventdetails";
 	}
-
+	 /*
+     * This method saves the favorite and notfavorite votes(votes are not mandate) for each category to business table.It returns to the samepage(eventdetails.jsp)
+     *  it displays the updated vote count.
+     */
 	@PostMapping("/savevotes")
 	public String savevotes(@RequestParam(value = "eventid") long eventid,long groupid,
 			@RequestParam(required = false) String restaurants_favorite,
@@ -209,7 +230,11 @@ public class ModelController {
 		model.addAttribute("event", event);
 		return "eventdetails";
 	}
-	
+	 /*
+     * This method uses the event id to fetch info from table and and deletes it in the model.
+     * It also deletes the activity and business associated to the event in the respective tables.
+     * It returns to the same page(groupinfo.jsp) with the event deleted from the event list.
+     */
 	@GetMapping("/delete")
 	public String deleteevent(@RequestParam(value = "eventdetails") long id,@RequestParam(value = "group") long groupid,Model model) {
 		UserGroup usergroup = ugrep.findById(groupid).get();

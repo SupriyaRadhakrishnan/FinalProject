@@ -96,9 +96,14 @@
 			<option value="4">$$$$ - Ultra High End</option>
 		</select> <label for="eventcity">Choose a City:</label> <select id="eventcity"
 			name="eventcity">
-			<option value="Detroit">Detroit</option>
 			<option value="Chicago">Chicago</option>
-			<option value="New York City">New York City</option>
+			<option value="Detroit">Detroit</option>
+			<option value="Los Angeles">Los Angeles</option>	
+			<option value="Miami">Miami</option>	
+			<option value="New York City">New York City</option>	
+			<option value="Seattle">Seattle</option>	
+			<option value="Toronto">Toronto</option>
+			<option value="Washington DC">Washington DC</option>			
 		</select>
 		<div id="category_checkbox">
 			<label for="category">Event Category:</label> <input type="checkbox"
