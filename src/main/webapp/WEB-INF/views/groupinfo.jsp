@@ -73,8 +73,13 @@
 				</tr>
 			</c:forEach>
 		</tbody>
+
 	</table>
 	<form method="post" action="/createevent" onsubmit="return validate()">
+
+	</table><br />
+	<form method="post" action="/createevent">
+
 		<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
 		<h2>Create a Event</h2>
 		<label for="eventname">Event Name</label> <input type="text"
