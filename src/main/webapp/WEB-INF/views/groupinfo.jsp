@@ -18,20 +18,21 @@
 	<a href="/index">
 		<button type="submit">Go Home</button>
 	</a>
-    <a href="/logout"><button type="submit">Logout</button></a>
+	<a href="/logout"><button type="submit">Logout</button></a>
 	<h2>${groupinfo.getGroupname()}</h2>
 	<h3>Group Members</h3>
 	<ul>
-	<c:forEach var="member" items="${groupinfo.getUser()}"> 
-	  <li> ${member.getUsername()}</li>
-	</c:forEach>
+		<c:forEach var="member" items="${groupinfo.getUser()}">
+			<li>${member.getUsername()}</li>
+		</c:forEach>
 	</ul>
 	<h3>Add Members</h3>
 	<form method="post" action="/addmembers">
 		<label for="email">Members(Enter group members email)</label>
 		<textarea name="email" rows="4" cols="50" required></textarea>
-		<input type="text" name="groupid" hidden=true value="${groupinfo.getGroupid()}"/>
-		<br /> <input type="submit" value="Add to Group">
+		<input type="text" name="groupid" hidden=true
+			value="${groupinfo.getGroupid()}" /> <br /> <input type="submit"
+			value="Add to Group">
 	</form>
 	<h3>Events</h3>
 
@@ -51,7 +52,8 @@
 					<td>${e.getEventdate()}</td>
 					<c:if test="${e.getEventadmin() eq  userid}">
 						<td><a
-							href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"><button
+							href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"
+							onclick="if (!confirm('Are you sure you want to remove the event?')) return false;"><button
 									type="submit">Remove</button></a></td>
 					</c:if>
 				</tr>
@@ -78,12 +80,12 @@
 			<option value="Detroit">Detroit</option>
 			<option value="Chicago">Chicago</option>
 			<option value="New York City">New York City</option>
-		</select> <label for="category">Event Category</label>
+		</select>
 		<div>
-			<input type="checkbox" id="restaurants" value="restaurants"
-				name="category"> <label for="restaurants">Restaurants</label>
-			<input type="checkbox" id="parks" value="parks" name="category">
-			<label for="parks">Parks</label>
+			<label for="category">Event Category:</label> <input type="checkbox"
+				id="restaurants" value="restaurants" name="category"> <label
+				for="restaurants">Restaurants</label> <input type="checkbox"
+				id="parks" value="parks" name="category"> <label for="parks">Parks</label>
 		</div>
 		<input type="submit" value="Create Event">
 	</form>
