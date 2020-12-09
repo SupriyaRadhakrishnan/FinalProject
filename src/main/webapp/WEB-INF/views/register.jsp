@@ -11,6 +11,7 @@
 <body>
 	<img src="/images/events.png"
 		style="width: 200px; height: 75px;">
+		<br /><br /><br />
 	<h1>Register</h1>
 	<p>${message}</p>
 	<form method="post" action="/register">

@@ -11,8 +11,8 @@
 </head>
 <body>
 	<img src="/images/events.png"
-		style="width: 200px; height: 75px;">
-	<h1>Events</h1>
+		style="width: 200px; height: 75px;"><br />
+	<br /><br /><br />
 	<p>${message}</p>
 	<form method="post" action="/login">
 		<label for="email">Email</label> <input type="text" name="email" required><br />
