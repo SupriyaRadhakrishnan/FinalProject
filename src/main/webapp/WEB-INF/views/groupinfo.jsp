@@ -11,6 +11,20 @@
 <meta charset="UTF-8">
 <title>Events | Group Details</title>
 <link rel="stylesheet" href="/css/MainStyles.css">
+<script>
+	function validate() {
+		let boxes = document.querySelectorAll("#category_checkbox input[type=checkbox]");
+		for (let i = 0; i < boxes.length; i++) {
+			console.log(boxes[i].checked);
+			if (boxes[i].checked) {
+				return true;
+			}
+		}
+		alert("You didn't check a category");
+		return false;
+		
+	}
+</script>
 </head>
 <body>
 	<img src="http://j.b5z.net/i/u/2017580/i/Events1.png"
@@ -60,7 +74,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<form method="post" action="/createevent">
+	<form method="post" action="/createevent" onsubmit="return validate()">
 		<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
 		<h2>Create a Event</h2>
 		<label for="eventname">Event Name</label> <input type="text"
@@ -68,7 +82,7 @@
 			for="eventdescription">Event Description</label>
 		<textarea name="eventdescription" rows="4" cols="50"></textarea>
 		<br /> <label for="eventdate">Event Date</label> <input type="date"
-			placeholder="yyyy-mm-dd" name="eventdate" required><br /> <label
+			placeholder="yyyy-mm-dd" name="eventdate"  required><br /> <label
 			for="pricerange">Price</label> <select id="pricerange"
 			name="pricerange" value="1" required>
 			<option value="1">$</option>
@@ -81,7 +95,7 @@
 			<option value="Chicago">Chicago</option>
 			<option value="New York City">New York City</option>
 		</select>
-		<div>
+		<div id="category_checkbox">
 			<label for="category">Event Category:</label> <input type="checkbox"
 				id="restaurants" value="restaurants" name="category"> <label
 				for="restaurants">Restaurants</label> <input type="checkbox"
