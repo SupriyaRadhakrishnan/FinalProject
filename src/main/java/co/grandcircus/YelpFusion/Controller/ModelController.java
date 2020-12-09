@@ -1,5 +1,6 @@
 package co.grandcircus.YelpFusion.Controller;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
@@ -34,6 +35,10 @@ public class ModelController {
 
 	@Autowired
 	private BusinessRepository brep;
+	
+	static Date todayDate = Calendar.getInstance().getTime(); 
+	static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+	private static String todayString = formatter.format(todayDate);
 
 	@PostMapping("/creategroup")
 	public String creategroup(String email, String groupname, Model model) {
@@ -75,6 +80,7 @@ public class ModelController {
 		UserGroup ug = ugrep.findById(id).orElse(null);
 		model.addAttribute("groupinfo", ug);
 		model.addAttribute("event", ug.getEvents());
+		model.addAttribute("todayString", todayString);
 		return "groupinfo";
 	}
 
@@ -99,7 +105,7 @@ public class ModelController {
 		model.addAttribute("groupinfo", userGroup);
 		model.addAttribute("event", userGroup.getEvents());
 		model.addAttribute("userid", session.getAttribute("userid"));
-
+		model.addAttribute("todayString", todayString);
 		return "groupinfo";
 	}
 	
@@ -146,6 +152,7 @@ public class ModelController {
 		}
 		model.addAttribute("groupinfo", groupinfo);
 		model.addAttribute("event", groupinfo.getEvents());
+		model.addAttribute("todayString", todayString);
 		model.addAttribute("userid",session.getAttribute("userid"));
 		return "groupinfo";
 	}
@@ -220,6 +227,7 @@ public class ModelController {
 	}
 	
 		erep.deleteById(id);
+		model.addAttribute("todayString", todayString);
 		model.addAttribute("groupinfo",usergroup);
 		model.addAttribute("event", usergroup.getEvents());
 		model.addAttribute("userid",session.getAttribute("userid"));

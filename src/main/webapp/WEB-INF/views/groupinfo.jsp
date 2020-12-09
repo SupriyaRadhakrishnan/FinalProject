@@ -82,7 +82,7 @@
 			for="eventdescription">Event Description</label>
 		<textarea name="eventdescription" rows="4" cols="50"></textarea>
 		<br /> <label for="eventdate">Event Date</label> <input type="date"
-			placeholder="yyyy-mm-dd" name="eventdate"  required><br /> <label
+			placeholder="yyyy-mm-dd" min="${todayString }" name="eventdate"  required><br /> <label
 			for="pricerange">Price</label> <select id="pricerange"
 			name="pricerange" value="1" required>
 			<option value="1">$</option>
