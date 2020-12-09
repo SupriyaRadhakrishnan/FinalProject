@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
-	<img src="http://j.b5z.net/i/u/2017580/i/Events1.png"
+	<img src="/images/events.png"
 		style="width: 200px; height: 75px;">
 	<a href="/index">
 		<button type="submit">Go Home</button>
