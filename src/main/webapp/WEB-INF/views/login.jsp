@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/MainStyles.css">
-<title>Events | Login</title>
+<title>Meet Me There | Login</title>
 </head>
 <body>
 	<img src="/images/logo.png" style="vertical-align:middle; margin:0px 50px;">

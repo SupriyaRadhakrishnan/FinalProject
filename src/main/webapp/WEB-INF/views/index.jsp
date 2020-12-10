@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Events | Home</title>
+<title>Meet Me There | Home</title>
 <link rel="stylesheet" href="/css/styles.css">
 <link href="/css/MainStyles.css" rel="stylesheet" type="text/css" />
 </head>

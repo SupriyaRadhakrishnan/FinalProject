@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Events | Group Details</title>
+<title>Meet Me There | Group Details</title>
 <link rel="stylesheet" href="/css/MainStyles.css">
 <script>
 	function validate() {
@@ -92,7 +92,7 @@
 			<h2>Create an Event</h2>
 			<label for="eventname">Event Name</label> <input type="text"
 				name="eventname" required><br /> <label
-				for="eventdescription">Event Description</label>
+				for="eventdescription">Event Description</label> 
 			<textarea name="eventdescription" rows="4" cols="50"></textarea>
 			<br /> <label for="eventdate">Event Date</label> <input type="date"
 				placeholder="yyyy-mm-dd" min="${todayString }" name="eventdate"				

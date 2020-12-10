@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Events | Group Home</title>
+<title>Meet Me There | Group Home</title>
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
@@ -31,6 +31,7 @@
 			hidden=true />
 		<c:forEach var="activity" items="${event.getActivity()}">
 			<c:set var="activityname" value="${activity.activityname}" />
+			<div class ="businesslist">
 			<table id="businesslist">
 				<thead>
 					<tr>
@@ -58,7 +59,8 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</c:forEach> <br />
+			</div>
+		</c:forEach> 
 		<input type="submit" value="Save votes" />
 	</form>
 </body>

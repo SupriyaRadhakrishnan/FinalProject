@@ -24,11 +24,11 @@ button {
   cursor: pointer;
 }
 
-table #businesslist
+div.businesslist
 { 
-	display: inline-block;
+	
     float: left;
-     border-spacing: 10px;
+    border-spacing: 10px;
 }
 
 img {

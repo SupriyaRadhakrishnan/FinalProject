@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Events | Register</title>
+<title>Meet Me There | Register</title>
 <link rel="stylesheet" href="/css/MainStyles.css">
 </head>
 <body>
