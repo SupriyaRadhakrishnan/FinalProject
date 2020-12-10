@@ -187,10 +187,22 @@ public class ModelController {
 	@GetMapping("/eventdetails")
 	public String eventdetails(@RequestParam(value = "event") long id, @RequestParam(value = "group") long groupid,Model model) {
 		System.out.println("inside eventdetails");
+		boolean voted = false;
 		Event e = erep.findById(id).orElse(null);
 		System.out.println("event " + e);
 		model.addAttribute("event", e);
 		model.addAttribute("groupid",groupid);
+		User user = urep.findByEmail((String) session.getAttribute("useremail"));
+		System.out.println("String.valueOf(user.getId())" + String.valueOf(user.getId()));
+		if(e.getVotedmembers()!=null)
+		{
+		voted = e.getVotedmembers().contains(String.valueOf(user.getId()));
+		}
+		if(voted)
+		{
+			System.out.println("Voted");
+			model.addAttribute("message","You have already Voted");
+		}
 		return "eventdetails";
 	}
 	 /*
@@ -205,6 +217,7 @@ public class ModelController {
 			@RequestParam(required = false) String parks_notfavorite, Model model) {
 
 		Event event = erep.findById(eventid).get();
+		
 		List<Activity> activitylist = event.getActivity();
 		String favbusinessname = "";
 		String nfavbusinessname = "";
@@ -233,6 +246,10 @@ public class ModelController {
 				}
 			}
 		}
+		User user = urep.findByEmail((String) session.getAttribute("useremail"));
+		event.setVotedmembers(event.getVotedmembers() + "," + user.getId());
+		erep.save(event);
+		model.addAttribute("message","You have already Voted");
 		model.addAttribute("groupid",groupid);
 		model.addAttribute("event", event);
 		return "eventdetails";

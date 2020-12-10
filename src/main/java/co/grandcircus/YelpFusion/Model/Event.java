@@ -27,6 +27,8 @@ public class Event {
 	private Date eventdate;
 	private String eventcity;
 	private long eventadmin;
+	
+	private String votedmembers;
 
 	@ManyToOne
 	@JoinColumn(name = "groupid")
@@ -34,6 +36,7 @@ public class Event {
 
 	@OneToMany(mappedBy = "event")
 	private List<Activity> activity;
+	
 
 	public Event() {
 
@@ -112,6 +115,14 @@ public class Event {
 
 	public void setActivity(List<Activity> activity) {
 		this.activity = activity;
+	}
+
+	public String getVotedmembers() {
+		return votedmembers;
+	}
+
+	public void setVotedmembers(String votedmembers) {
+		this.votedmembers = votedmembers;
 	}
 
 	

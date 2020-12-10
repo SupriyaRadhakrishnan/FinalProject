@@ -25,7 +25,9 @@
 	</a>
 	<a href="/logout"><button type="submit">Logout</button></a>
 	<h2>${fn:toUpperCase(event.getEventname())}</h2>
+	<h3>${message}</h3>
 	<form method="post" action="/savevotes">
+	
 	<input type="text" name="groupid" hidden=true value="${groupid}"/>
 		<input type="number" name="eventid" value="${event.getEventid()}"
 			hidden=true />
@@ -46,14 +48,14 @@
 						<tr>
 						<td></td>
 							<td><label for="${activityname}_favorite">Most Favorite </label>
-								<input type="radio" name="${activityname}_favorite"
-								value="${business.name}"><br />Votes
+								 <c:if test = "${empty message}"><input type="radio" name="${activityname}_favorite"
+								value="${business.name}"></c:if><br />Votes
 								:${business.favourite}</td>
 							<td><img src="${business.image_url}" /><br /> <a
 								href="${business.url}"> ${business.name} </a></td>
 							<td><label for="${activityname}_notfavorite">Least
-									Favorite </label><input type="radio" name="${activityname}_notfavorite"
-								value="${business.name}"> <br /> Votes
+									Favorite </label> <c:if test = "${empty message}"><input type="radio" name="${activityname}_notfavorite"
+								value="${business.name}"></c:if> <br /> Votes
 								:${business.notfavourite}</td>
 						</tr>
 					</c:forEach>
@@ -61,7 +63,9 @@
 			</table>
 			</div>
 		</c:forEach> 
+		<c:if test = "${empty message}">
 		<input type="submit" value="Save votes" />
+		</c:if>
 	</form>
 </body>
 </html>
