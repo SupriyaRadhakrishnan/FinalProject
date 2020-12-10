@@ -65,10 +65,14 @@ public class ModelController {
 				memberlist.add(memberuser);
 			}
 		}
-		memberlist.add(user);
-		currentgroups.add(ug);
+		if(memberlist.contains(user));
+		else
+		{
+	    memberlist.add(user);
+     	currentgroups.add(ug);
 		user.setUsergroup(currentgroups);
 		ug.setUser(memberlist);
+		}
 		ugrep.save(ug);
 		urep.save(user);
 		model.addAttribute("groups", user.getUsergroup());
@@ -107,9 +111,12 @@ public class ModelController {
 			User memberuser = urep.findByEmail(memberinput[i]);
 			if (memberuser != null) {
 				List<UserGroup> currentmembergroups = memberuser.getUsergroup();
+				if(currentmembergroups.contains(userGroup));
+				else {
 				currentmembergroups.add(userGroup);
 				memberuser.setUsergroup(currentmembergroups);
-				memberlist.add(memberuser);		
+				memberlist.add(memberuser);	
+				}
 			}
 		}
 		ugrep.save(userGroup);
