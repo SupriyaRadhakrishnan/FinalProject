@@ -1,5 +1,6 @@
 package co.grandcircus.YelpFusion.Service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,6 +12,9 @@ import co.grandcircus.YelpFusion.Model.BusinessResponse;
 
 @Service
 public class YelpFusionService {
+	
+	@Value("${apikey}")
+	String apikey;
 
 	private RestTemplate rt = new RestTemplate();
 
@@ -21,9 +25,8 @@ public class YelpFusionService {
 			url += "&categories={categories}";
 		}
 		// Set up headers.
-		String apiKey = "LDxP8dFS6C8yX--cCtLbIK-RZmboBOoUzKPJKHpSDEnz0a3KgpDAqY4nR6f3w8VgheRenPvi6CXMPM5inJuzh2Mn6no3FwYSzDHwxR-cBjRhJ2Yn0cqgQMQQGL7GX3Yx";
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "Bearer " + apiKey);
+		headers.add("Authorization", "Bearer " + apikey);
 		BusinessResponse response = rt.exchange(url, HttpMethod.GET, new HttpEntity<>(headers), BusinessResponse.class,
 				location, pricerange, categories).getBody();
 		System.out.println("response " + response);
