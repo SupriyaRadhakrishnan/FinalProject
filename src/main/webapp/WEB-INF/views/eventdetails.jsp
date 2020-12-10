@@ -45,13 +45,13 @@
 					<c:forEach var="business" items="${activity.getBusiness()}">
 						<tr>
 						<td></td>
-							<td><label for="${activityname}_favorite">Favorite </label>
+							<td><label for="${activityname}_favorite">Most Favorite </label>
 								<input type="radio" name="${activityname}_favorite"
 								value="${business.name}"><br />Votes
 								:${business.favourite}</td>
 							<td><img src="${business.image_url}" /><br /> <a
 								href="${business.url}"> ${business.name} </a></td>
-							<td><label for="${activityname}_notfavorite">Not
+							<td><label for="${activityname}_notfavorite">Least
 									Favorite </label><input type="radio" name="${activityname}_notfavorite"
 								value="${business.name}"> <br /> Votes
 								:${business.notfavourite}</td>
