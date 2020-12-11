@@ -43,6 +43,7 @@
 		<button type="submit">Go Home</button>
 	</a>
 	<a href="/logout"><button type="submit">Logout</button></a>
+	<h1>Welcome ${username}</h1>
 	<h2>${groupinfo.getGroupname()}</h2>
 	<h3>Group Members</h3>
 	<ul>

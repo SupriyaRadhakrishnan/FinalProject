@@ -92,6 +92,7 @@ public class ModelController {
 		model.addAttribute("groupinfo", ug);
 		model.addAttribute("event", ug.getEvents());
 		model.addAttribute("todayString", todayString);
+		model.addAttribute("username", session.getAttribute("username"));
 		return "groupinfo";
 	}
 	
@@ -137,6 +138,7 @@ public class ModelController {
 		model.addAttribute("event", userGroup.getEvents());
 		model.addAttribute("userid", session.getAttribute("userid"));
 		model.addAttribute("todayString", todayString);
+		model.addAttribute("username", session.getAttribute("username"));
 		return "groupinfo";
 	}
     /*
@@ -191,6 +193,7 @@ public class ModelController {
 		model.addAttribute("event", groupinfo.getEvents());
 		model.addAttribute("todayString", todayString);
 		model.addAttribute("userid",session.getAttribute("userid"));
+		model.addAttribute("username", session.getAttribute("username"));
 		return "groupinfo";
 	}
 	 /*
@@ -207,15 +210,7 @@ public class ModelController {
 		model.addAttribute("groupid",groupid);
 		User user = urep.findByEmail((String) session.getAttribute("useremail"));
 		System.out.println("String.valueOf(user.getId())" + String.valueOf(user.getId()));
-		if(e.getVotedmembers()!=null)
-		{
-		voted = e.getVotedmembers().contains(String.valueOf(user.getId()));
-		}
-		if(voted)
-		{
-			System.out.println("Voted");
-			model.addAttribute("message","You have already Voted");
-		}
+		model.addAttribute("username", session.getAttribute("username"));
 		return "eventdetails";
 	}
 	 /*
@@ -223,28 +218,35 @@ public class ModelController {
      *  it displays the updated vote count.
      */
 	@PostMapping("/savevotes")
-	public String savevotes(@RequestParam(value = "eventid") long eventid,long groupid,
+	public String savevotes(@RequestParam(value = "eventid") long eventid,@RequestParam(value = "activityid") long activityid,long groupid,
 			@RequestParam(required = false) String restaurants_favorite,
 			@RequestParam(required = false) String restaurants_notfavorite,
 			@RequestParam(required = false) String parks_favorite,
 			@RequestParam(required = false) String parks_notfavorite, Model model) {
+		
+		System.out.println("parks_favorite"+ parks_favorite);
 
 		Event event = erep.findById(eventid).get();
-		
-		List<Activity> activitylist = event.getActivity();
+		String selectedactivity ="";
+		Activity activitydetails = arep.findById(activityid).get();
 		String favbusinessname = "";
 		String nfavbusinessname = "";
-		for (Activity activity : activitylist) {
-			String activityname = activity.getActivityname();
+
+			String activityname = activitydetails.getActivityname();
+			System.out.println("activityname"+ activityname);
+			
 			if (activityname.equals("restaurants")) {
 				favbusinessname = restaurants_favorite;
 				nfavbusinessname = restaurants_notfavorite;
+				selectedactivity = "restaurants";
+				
 			} else if (activityname.equals("parks")) {
 				favbusinessname = parks_favorite;
 				nfavbusinessname = parks_notfavorite;
+				selectedactivity = "parks";	
 			}
 			if ((activityname + "_favorite") != null || (activityname + "_notfavorite") != null) {
-				List<Business> businesslist = activity.getBusiness();
+				List<Business> businesslist = activitydetails.getBusiness();
 				for (Business business : businesslist) {
 
 					if (business.getName().equals(favbusinessname) && (favbusinessname) != null) {
@@ -258,13 +260,23 @@ public class ModelController {
 					brep.save(business);
 				}
 			}
-		}
+		
 		User user = urep.findByEmail((String) session.getAttribute("useremail"));
-		event.setVotedmembers(event.getVotedmembers() + "," + user.getId());
+		event.setVotedmembers(event.getVotedmembers() + "," +selectedactivity+ "_" + user.getId());
 		erep.save(event);
+		List<Business> business = activitydetails.getBusiness();
+		Collections.sort(business, new Comparator<Business>() {
+			  @Override
+			  public int compare(Business b1, Business b2) {
+			    return ((Integer)(b2.getFavourite())).compareTo((Integer)(b1.getFavourite()));
+			  }
+			});
+		model.addAttribute("businesses",business);
 		model.addAttribute("message","You have already Voted");
 		model.addAttribute("groupid",groupid);
+		model.addAttribute("selectedactivity",activitydetails);
 		model.addAttribute("event", event);
+		model.addAttribute("username", session.getAttribute("username"));
 		return "eventdetails";
 	}
 	 /*
@@ -295,7 +307,45 @@ public class ModelController {
 		model.addAttribute("groupinfo",usergroup);
 		model.addAttribute("event", usergroup.getEvents());
 		model.addAttribute("userid",session.getAttribute("userid"));
+		model.addAttribute("username", session.getAttribute("username"));
 		return "groupinfo";
 	}
+	
+	
+	@PostMapping("/selectedactivity")
+	public String selectedactivity(long activity,long groupid,long eventid,Model model)
+	{
+		Activity selectedactivity = arep.findById(activity).get();
+		String activityname = selectedactivity.getActivityname();
+		List<Business> business = selectedactivity.getBusiness();
+		Event event = erep.findById(eventid).get();
+		User user = urep.findByEmail((String) session.getAttribute("useremail"));
+		boolean voted = false;
+		Collections.sort(business, new Comparator<Business>() {
+			  @Override
+			  public int compare(Business b1, Business b2) {
+			    return ((Integer)(b2.getFavourite())).compareTo((Integer)(b1.getFavourite()));
+			  }
+			});
+		
+		if(event.getVotedmembers()!=null)
+		{
+		voted = event.getVotedmembers().contains(activityname + "_" +String.valueOf(user.getId()));
+		}
+		if(voted)
+		{
+			System.out.println("Voted");
+			model.addAttribute("message","You have already Voted");
+		}
+		
+		model.addAttribute("groupid",groupid);
+		model.addAttribute("event", event);
+		model.addAttribute("businesses",business);
+		model.addAttribute("selectedactivity",selectedactivity);
+		model.addAttribute("username", session.getAttribute("username"));
+		return "eventdetails";
+	}
+	
+	
 
 }

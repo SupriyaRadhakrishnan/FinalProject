@@ -24,37 +24,52 @@
 		<button type="submit">Go to group</button>
 	</a>
 	<a href="/logout"><button type="submit">Logout</button></a>
+	<h1>Welcome ${username}</h1>
 	<h2>${fn:toUpperCase(event.getEventname())}</h2>
 	<h3>${message}</h3>
-	<form method="post" action="/savevotes">
+	
 	
 	<input type="text" name="groupid" hidden=true value="${groupid}"/>
 		<input type="number" name="eventid" value="${event.getEventid()}"
 			hidden=true />
+			<form method="post" action="/selectedactivity">
+		<label for="activity">Activity</label> <select id="activity" name="activity" required>
 		<c:forEach var="activity" items="${event.getActivity()}">
-			<c:set var="activityname" value="${activity.activityname}" />
+			<option value="${activity.activityid}">${fn:toUpperCase(fn:substring(activity.activityname, 0, 1))}${fn:toLowerCase(fn:substring(activity.activityname, 1, -1))}</option>
+			</c:forEach>
+			</select>
+		<input type="text" name="groupid" hidden=true value="${groupid}"/>	
+		<input type="number" name="eventid" value="${event.getEventid()}"
+			hidden=true />
+			<input type="submit" value="List choice"> 
+			</form>
+			<form method="post" action="/savevotes">
+			<input type="text" name="groupid" hidden=true value="${groupid}"/>
+		    <input type="number" name="eventid" value="${event.getEventid()}" hidden=true />
+		     <input type="number" name="activityid" value="${selectedactivity.getActivityid()}" hidden=true />
+			<c:if test="${not empty businesses}">
 			<div class ="businesslist">
 			<table id="businesslist">
 				<thead>
 					<tr>
 					    <th></th>
-						<th><c:out value="${fn:toUpperCase(activity.activityname)}"></c:out></th>
+						<th><c:out value="${fn:toUpperCase(selectedactivity.activityname)}"></c:out></th>
 						<th></th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="business" items="${activity.getBusiness()}">
+					<c:forEach var="business" items="${businesses}">
 						<tr>
 						<td></td>
-							<td><label for="${activityname}_favorite">Most Favorite </label>
-								 <c:if test = "${empty message}"><input type="radio" name="${activityname}_favorite"
+							<td><label for="${selectedactivity.activityname}_favorite">Most Favorite </label>
+								 <c:if test = "${empty message}"><input type="radio" name="${selectedactivity.activityname}_favorite"
 								value="${business.name}"></c:if><br />Votes
 								:${business.favourite}</td>
 							<td><img src="${business.image_url}" /><br /> <a
 								href="${business.url}"> ${business.name} </a></td>
-							<td><label for="${activityname}_notfavorite">Least
-									Favorite </label> <c:if test = "${empty message}"><input type="radio" name="${activityname}_notfavorite"
+							<td><label for="${selectedactivity.activityname}_notfavorite">Least
+									Favorite </label> <c:if test = "${empty message}"><input type="radio" name="${selectedactivity.activityname}_notfavorite"
 								value="${business.name}"></c:if> <br /> Votes
 								:${business.notfavourite}</td>
 						</tr>
@@ -62,9 +77,9 @@
 				</tbody>
 			</table>
 			</div>
-		</c:forEach> 
 		<c:if test = "${empty message}">
 		<input type="submit" value="Save votes" />
+		</c:if>
 		</c:if>
 	</form>
 </body>
