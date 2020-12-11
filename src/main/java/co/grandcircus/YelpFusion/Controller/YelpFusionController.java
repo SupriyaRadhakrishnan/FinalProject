@@ -86,7 +86,6 @@ public class YelpFusionController {
 	public String login(String email, String password, Model model) {
 		System.out.println("Unencrypted: " + password);
 		User user = urep.findByEmail(email);
-		System.out.println(user.getPassword());
 		if (user != null) {
 
 			if (pwEncoder.matches(password, user.getPassword())) {
@@ -100,9 +99,6 @@ public class YelpFusionController {
 				return "index";
 			}
 		}
-
-		System.out.println("Invalid user details");
-
 		message = "Invalid Login Details";
 
 		return "redirect:/";

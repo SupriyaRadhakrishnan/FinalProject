@@ -23,7 +23,10 @@
 	<br />
 	<h2>Your Groups</h2>
 	<c:forEach var="group" items="${groups}">
+	<div>
 		<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a>
+		<a href="/leavegroup/${group.getGroupid()}"><button type="submit">Leave Group</button></a> 
+		</div>
 		<br />
 	</c:forEach>
 	<form method="post" action="/creategroup">

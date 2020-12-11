@@ -94,6 +94,19 @@ public class ModelController {
 		model.addAttribute("todayString", todayString);
 		return "groupinfo";
 	}
+	
+	@GetMapping("/leavegroup/{groupid}")
+	public String leavegroup(@PathVariable("groupid") long id, Model model) {
+		UserGroup ug = ugrep.findById(id).orElse(null);
+		User user = urep.findByEmail((String) session.getAttribute("useremail"));
+		ug.removeUser(user);
+		ugrep.save(ug);
+		user.removeUsergroup(ug);
+		urep.save(user);
+		model.addAttribute("groups", user.getUsergroup());
+		model.addAttribute("username", session.getAttribute("username"));
+		return "/index";
+	}
     /*
      * This method uses the post method form to update a group,it will add valid email to the already existing 
      * group member list and updates the data to the usergroup and the user tables.Return back to the

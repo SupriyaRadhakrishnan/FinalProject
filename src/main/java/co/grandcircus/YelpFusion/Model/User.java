@@ -70,5 +70,15 @@ public class User {
 	public void setUsergroup(List<UserGroup> usergroup) {
 		this.usergroup = usergroup;
 	}
+	
+	  public void addUsergroup(UserGroup usergroup) {
+	        this.usergroup.add(usergroup);
+	        usergroup.getUser().add(this);
+	    }
+	  
+	    public void removeUsergroup(UserGroup usergroup) {
+	        this.usergroup.remove(usergroup);
+	        usergroup.getUser().remove(this);
+	    }
 
 }

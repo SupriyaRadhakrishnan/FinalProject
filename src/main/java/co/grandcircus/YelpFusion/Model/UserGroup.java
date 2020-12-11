@@ -63,5 +63,13 @@ public class UserGroup {
 		this.user = user;
 	}
 	
-	
+	  public void addUser(User user) {
+	        this.user.add(user);
+	        user.getUsergroup().add(this);
+	    }
+	  
+	    public void removeUser(User user) {
+	        this.user.remove(user);
+	        user.getUsergroup().remove(this);
+	    }
 }
