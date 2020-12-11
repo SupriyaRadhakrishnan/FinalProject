@@ -197,11 +197,11 @@ public class ModelController {
 	}
 	 /*
      * This method uses the event id to fetch info from table and and adds it to the model.
-     * It returns to the eventdetails page displaying the category and the related business along with voting option.
+     * It returns to the eventdetails page displaying the category.
      */
 	@GetMapping("/eventdetails")
 	public String eventdetails(@RequestParam(value = "event") long id, @RequestParam(value = "group") long groupid,Model model) {
-		System.out.println("inside eventdetails");
+	
 		Event e = erep.findById(id).orElse(null);
 		System.out.println("event " + e);
 		model.addAttribute("event", e);
@@ -213,7 +213,7 @@ public class ModelController {
 	}
 	 /*
      * This method saves the favorite and notfavorite votes(votes are not mandate) for each category to business table.It returns to the samepage(eventdetails.jsp)
-     *  it displays the updated vote count.
+     *  it displays the updated vote count and the business list sorted based on the max favourite votes.
      */
 	@PostMapping("/savevotes")
 	public String savevotes(@RequestParam(value = "eventid") long eventid,@RequestParam(value = "activityid") long activityid,long groupid,
@@ -226,7 +226,7 @@ public class ModelController {
 			@RequestParam(required = false) String parks_favorite,
 			@RequestParam(required = false) String parks_notfavorite, Model model) {
 		
-		//System.out.println("parks_favorite"+ parks_favorite);
+	
 
 		Event event = erep.findById(eventid).get();
 		String selectedactivity ="";
@@ -264,11 +264,11 @@ public class ModelController {
 				for (Business business : businesslist) {
 
 					if (business.getName().equals(favbusinessname) && (favbusinessname) != null) {
-						System.out.println("inside favs");
+						
 						business.setFavourite(business.getFavourite() + 1);
 					}
 					if (business.getName().equals(nfavbusinessname) && (nfavbusinessname) != null) {
-						System.out.println("inside notfavs");
+						
 						business.setNotfavourite(business.getNotfavourite() + 1);
 					}
 					brep.save(business);
@@ -325,7 +325,10 @@ public class ModelController {
 		return "groupinfo";
 	}
 	
-	
+	 /*
+     * It returns to the Business details sorted based on max favorite votes.
+     * And send it to the eventdetails page.
+     */
 	@PostMapping("/selectedactivity")
 	public String selectedactivity(long activity,long groupid,long eventid,Model model)
 	{
@@ -348,7 +351,7 @@ public class ModelController {
 		}
 		if(voted)
 		{
-			System.out.println("Voted");
+			
 			model.addAttribute("message","You have already Voted");
 		}
 		
