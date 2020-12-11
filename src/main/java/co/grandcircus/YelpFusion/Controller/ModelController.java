@@ -174,15 +174,14 @@ public class ModelController {
 		System.out.println("pricerange" + pricerange);
 		for (String c : category) {
 			bs = yfs.getBusinesses(event.getEventcity(), c, pricerange);
-			if(bs != null) {
+			if(!bs.getBusinesses().isEmpty()) {
 			Activity activity = new Activity();
 			activity.setActivityname(c);
 			activity.setBusiness(bs.getBusinesses());
 			activitylist.add(activity);
 			activity.setEvent(event);
 			arep.save(activity);
-			
-			for (Business business : bs.getBusinesses()) {
+			for (Business business : bs.getBusinesses()) {			
 				listofBusiness.add(business);
 				business.setActivity(activity);
 				brep.save(business);
@@ -203,7 +202,6 @@ public class ModelController {
 	@GetMapping("/eventdetails")
 	public String eventdetails(@RequestParam(value = "event") long id, @RequestParam(value = "group") long groupid,Model model) {
 		System.out.println("inside eventdetails");
-		boolean voted = false;
 		Event e = erep.findById(id).orElse(null);
 		System.out.println("event " + e);
 		model.addAttribute("event", e);
@@ -221,10 +219,14 @@ public class ModelController {
 	public String savevotes(@RequestParam(value = "eventid") long eventid,@RequestParam(value = "activityid") long activityid,long groupid,
 			@RequestParam(required = false) String restaurants_favorite,
 			@RequestParam(required = false) String restaurants_notfavorite,
+			@RequestParam(required = false) String tours_favorite,
+			@RequestParam(required = false) String tours_notfavorite,
+			@RequestParam(required = false) String hotels_favorite,
+			@RequestParam(required = false) String hotels_notfavorite,
 			@RequestParam(required = false) String parks_favorite,
 			@RequestParam(required = false) String parks_notfavorite, Model model) {
 		
-		System.out.println("parks_favorite"+ parks_favorite);
+		//System.out.println("parks_favorite"+ parks_favorite);
 
 		Event event = erep.findById(eventid).get();
 		String selectedactivity ="";
@@ -244,6 +246,18 @@ public class ModelController {
 				favbusinessname = parks_favorite;
 				nfavbusinessname = parks_notfavorite;
 				selectedactivity = "parks";	
+			}
+			
+			else if (activityname.equals("tours")) {
+				favbusinessname = tours_favorite;
+				nfavbusinessname = tours_notfavorite;
+				selectedactivity = "tours";	
+			}
+			
+			else if (activityname.equals("hotels")) {
+				favbusinessname = hotels_favorite;
+				nfavbusinessname = hotels_notfavorite;
+				selectedactivity = "hotels";	
 			}
 			if ((activityname + "_favorite") != null || (activityname + "_notfavorite") != null) {
 				List<Business> businesslist = activitydetails.getBusiness();

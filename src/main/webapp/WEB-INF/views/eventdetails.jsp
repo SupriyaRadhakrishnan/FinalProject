@@ -26,9 +26,7 @@
 	<a href="/logout"><button type="submit">Logout</button></a>
 	<h1>Welcome ${username}</h1>
 	<h2>${fn:toUpperCase(event.getEventname())}</h2>
-	<h3>${message}</h3>
-	
-	
+	<h3>${message}</h3>	
 	<input type="text" name="groupid" hidden=true value="${groupid}"/>
 		<input type="number" name="eventid" value="${event.getEventid()}"
 			hidden=true />

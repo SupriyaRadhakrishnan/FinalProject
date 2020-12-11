@@ -120,6 +120,12 @@
 					for="restaurants">Restaurants</label> <input type="checkbox"
 					id="parks" value="parks" name="category"> <label
 					for="parks">Parks</label>
+					<input type="checkbox"
+					id="tours" value="tours" name="category"> <label
+					for="tours">Tours</label>
+					<input type="checkbox"
+					id="hotels" value="hotels" name="category"> <label
+					for="hotels">Hotels</label>
 			</div>
 			<input type="submit" value="Create Event">
 		</form>
