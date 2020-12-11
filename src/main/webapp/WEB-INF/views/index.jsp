@@ -25,7 +25,7 @@
 	<c:forEach var="group" items="${groups}">
 	<div>
 		<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a>
-		<a href="/leavegroup/${group.getGroupid()}"><button type="submit">Leave Group</button></a> 
+		<a href="/leavegroup/${group.getGroupid()}" onclick="if (!confirm('Are you sure you want to leave the group?')) return false;"><button type="submit">Leave Group</button></a> 
 		</div>
 		<br />
 	</c:forEach>

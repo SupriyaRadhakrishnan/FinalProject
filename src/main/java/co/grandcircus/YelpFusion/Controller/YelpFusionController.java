@@ -83,8 +83,7 @@ public class YelpFusionController {
 	 * message
 	 */
 	@PostMapping("/login")
-	public String login(String email, String password, Model model) {
-		System.out.println("Unencrypted: " + password);
+	public String login(String email, String password, Model model) {		
 		User user = urep.findByEmail(email);
 		if (user != null) {
 
