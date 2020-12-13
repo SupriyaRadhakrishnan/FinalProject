@@ -60,13 +60,13 @@
 	<div class="row">
 		<div class="col-lg-6 col-md-6">
 			<h2>Group: ${groupinfo.getGroupname()}</h2>
-			<h3>Group Members</h3>
+			<h4>Group Members</h4>
 			<ul>
 				<c:forEach var="member" items="${groupinfo.getUser()}">
 					<li>${member.getUsername()}</li>
 				</c:forEach>
 			</ul>
-			<h3>Add Members</h3>
+			<h4>Add Members</h4>
 			<form method="post" action="/addmembers">
 				<label for="email">Members(Enter group members email)</label>
 				<textarea name="email" rows="4" cols="50" required></textarea>
@@ -76,7 +76,7 @@
 			</form>
 		</div>
 		<div class="col-lg-6 col-md-6">
-			<h3>Your Events</h3>
+			<h2>Your Events</h2>
 
 			<table>
 				<thead>

@@ -58,7 +58,7 @@
 	</div>
 	<div class="col-lg-6 col-md-6">
 	<form method="post" action="/creategroup">
-		<h2 align="center">Create a Group</h2>
+		<h2>Create a Group</h2>
 		<label for="groupname">Group Name</label> <input type="text"
 			name="groupname" required><br /> <label for="email">Members(Enter
 			group members email)</label>
