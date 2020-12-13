@@ -28,27 +28,44 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<img src="/images/logo.png">
-	
-	<a href="/logout"><button type="submit">Logout</button></a>
+	<div class="row" align="center">
+		<div class="col-lg-12">
+			<img src="/images/logo.png">
+		</div>
+	</div>
 
-	<h1>Welcome ${username}</h1>
+<ul class="nav justify-content-center">   
+  <li class="nav-item">
+    <a class="nav-link" href="/logout"><button class="btn btn-primary mb-2" type="submit">Logout</button></a>
+  </li>   
+</ul>
+	
+
+	<h1 align="center">Welcome ${username}</h1>
 	<br />
-	<h2>Your Groups</h2>
+	<div class="row">
+	<div class="col-lg-6 col-md-6">
+	<h2 align="center">Your Groups</h2>
 	<c:forEach var="group" items="${groups}">
-	<div>
-		<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a>
-		<a href="/leavegroup/${group.getGroupid()}" onclick="if (!confirm('Are you sure you want to leave the group?')) return false;"><button type="submit">Leave Group</button></a> 
+		<div align="center">
+			<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a>
+			<a href="/leavegroup/${group.getGroupid()}"
+				onclick="if (!confirm('Are you sure you want to leave the group?')) return false;"><button class="btn btn-primary mb-2"
+					type="submit">Leave Group</button></a>
 		</div>
 		<br />
 	</c:forEach>
+	</div>
+	<div class="col-lg-6 col-md-6">
 	<form method="post" action="/creategroup">
-		<h2>Create a Group</h2>
+		<h2 align="center">Create a Group</h2>
 		<label for="groupname">Group Name</label> <input type="text"
 			name="groupname" required><br /> <label for="email">Members(Enter
 			group members email)</label>
 		<textarea name="email" rows="4" cols="50" required></textarea>
-		<br /> <input type="submit" value="Create group">
+		<br /> <input class="btn btn-primary mb-2" type="submit" value="Create group">
 	</form>
+	</div>
+	</div>
 </body>
 </html>
