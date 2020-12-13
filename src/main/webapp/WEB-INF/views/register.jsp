@@ -33,7 +33,7 @@
 	<div class="col-lg-12" align="center">
 		<h1>Register</h1>
 	</div>
-	<p>${message}</p>
+	<p align="center">${message}</p>
 	<div class="col-lg-12" align="center">
 		<form method="post" action="/register">
 			<div class="form-group w-25">
