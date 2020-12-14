@@ -44,11 +44,10 @@
 		<form method="post" action="/register">
 			<div class="form-group">
 				<label for="username">Name</label> <input type="text"
-					class="form-control" style="width: 400px" placeholder="Enter name" name="username"
+					class="form-control mb-2 mr-sm-2" style="width: 400px" placeholder="Enter name" name="username"
 					required> <label for="email">Email</label> <input
-					type="email" style="width: 400px" class="form-control" placeholder="Enter email"
-					name="email" required> <label for="password"
-					class="mr-sm-2">Password</label> <input
+					type="email" style="width: 400px" class="form-control mb-2 mr-sm-2" placeholder="Enter email"
+					name="email" required> <label for="password">Password</label> <input
 					class="form-control mb-2 mr-sm-2" style="width: 400px" placeholder="Password"
 					type="password" style="width: 400px" name="password" required> <input
 					type="submit" class="btn btn-danger mb-2" value="Register">
