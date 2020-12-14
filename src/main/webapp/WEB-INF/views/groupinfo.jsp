@@ -71,7 +71,7 @@
 			<form method="post" action="/addmembers">
 			<div class="form-group">
 				<label for="email">Members(Enter group members email)</label>
-				<textarea class="form-control mb-2 mr-sm-2" style="width: 400px" name="email" rows="2" cols="40" required></textarea>
+				<textarea class="form-control mb-2 mr-sm-2" name="email" rows="2" cols="40" required></textarea>
 				<input type="text" name="groupid" hidden=true
 					value="${groupinfo.getGroupid()}" /> 
 					<input class="btn btn-danger mb-2" type="submit" value="Add to Group">
@@ -118,7 +118,7 @@
 					<label for="eventname">Event Name</label> 
 					<input class="form-control mb-2 mr-sm-2" type="text" name="eventname" required> <label
 						for="eventdescription">Event Description</label>
-					<textarea class="form-control mb-2 mr-sm-2" style="width: 400px" name="eventdescription" rows="2" cols="40"></textarea>
+					<textarea class="form-control mb-2 mr-sm-2" name="eventdescription" rows="2" cols="40"></textarea>
 					 <label for="eventdate">Event Date</label> 
 					 <input	class="form-control mb-2 mr-sm-2" type="date" placeholder="yyyy-mm-dd" min="${todayString}"
 						name="eventdate" required>
@@ -141,7 +141,7 @@
 						<option value="Washington DC">Washington DC</option>
 					</select>
 					<div id="category_checkbox">
-						<label for="category">Event Category:</label>
+						<p>Event Category</p>	
 						<label for="restaurants">Restaurants</label> 
 						<input type="checkbox" id="restaurants" value="restaurants"
 							name="category"> 
@@ -160,6 +160,7 @@
 						value="Create Event">
 				</div>
 			</form>
+		</div>
 		</div>
 		</div>
 </body>

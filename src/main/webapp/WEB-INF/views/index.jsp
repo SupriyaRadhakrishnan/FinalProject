@@ -60,10 +60,9 @@
 			<form method="post" action="/creategroup">
 				<div class="form-group">
 					<label for="groupname">Group Name</label> 
-					<input style="width: 400px"
-						class="form-control" type="text" name="groupname" required>
+					<input class="form-control mb-2 mr-sm-2" style="width: 50%" type="text" name="groupname" required>
 					<label for="email">Members(Enter group members email)</label>
-					<textarea style="width: 400px" class="form-control mb-2 mr-sm-2" name="email" rows="2"
+					<textarea style="width: 50%" class="form-control mb-2 mr-sm-2" name="email" rows="2"
 						cols="40" required></textarea>
 					<input  class="btn btn-danger mb-2" type="submit"
 						value="Create group">

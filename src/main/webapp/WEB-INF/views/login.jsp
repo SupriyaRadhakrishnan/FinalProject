@@ -47,7 +47,7 @@
 		<form method="post" action="/login">
 			<div class="form-group">
 				<label for="email">Email address</label> <input style="width: 400px" type="email"
-					class="form-control" placeholder="Enter email" name="email"
+					class="form-control mb-2 mr-sm-2" placeholder="Enter email" name="email"
 					required> <label for="password" class="mr-sm-2">Password</label>
 				<input style="width: 400px" type="password" placeholder="Password"
 					class="form-control mb-2 mr-sm-2" name="password" required>

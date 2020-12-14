@@ -45,12 +45,7 @@
   <li class="nav-item">
     <a class="nav-link" href="/logout"><button class="btn btn-danger mb-2" type="submit">Logout</button></a>
   </li>   
-</ul>
-
-
-
-	
-	
+</ul>	
 	
 	<h1 align="center">Welcome ${username}</h1>
 	<h2 align="center">Event: ${fn:toUpperCase(event.getEventname())}</h2>
