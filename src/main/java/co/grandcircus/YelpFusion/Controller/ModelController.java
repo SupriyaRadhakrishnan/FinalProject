@@ -363,6 +363,88 @@ public class ModelController {
 		return "eventdetails";
 	}
 	
+	@GetMapping("/editevent")
+	public String editevent(@RequestParam(value = "eventdetails") long id,@RequestParam(value = "group") long groupid,Model model) {
+		UserGroup usergroup = ugrep.findById(groupid).get();
+		Event event = erep.findById(id).get();
+		model.addAttribute("todayString", todayString);
+		model.addAttribute("groupinfo",usergroup);
+		model.addAttribute("event", event);
+		model.addAttribute("userid",session.getAttribute("userid"));
+		model.addAttribute("username", session.getAttribute("username"));
+
+		return "editevent";
+	}
 	
+	@PostMapping("/saveeventchanges")
+	public String saveeventchanges(String pricerange, @RequestParam(value = "groupid") long groupid, Event event, @RequestParam(value = "category") List<String> category, Model model) 
+	{
+		
+		User user = urep.findByEmail((String) session.getAttribute("useremail"));
+		List<Business> listofBusiness = new ArrayList<>();
+		List<Activity> activitylist = new ArrayList<>();
+		BusinessResponse bs = null;
+		UserGroup groupinfo = ugrep.findById(groupid).get();
+		System.out.println("groupinfo" + groupinfo);
+		
+		System.out.println(event.getEventid());
+		Event updatingevent =  erep.findById(event.getEventid()).get();
+		updatingevent.setEventcity(event.getEventcity());
+		updatingevent.setEventdescription(event.getEventdescription());
+		updatingevent.setEventdate(event.getEventdate());
+		updatingevent.setEventname(event.getEventname());
+		updatingevent.setVotedmembers("");
+		// The API call uses the param pricerange="1,2,3,4"
+		// or as a single number eg. pricerange=3
+		
+		if (pricerange.equals("1")) {
+			pricerange = "1";
+		} else if (pricerange.equals("2")) {
+			pricerange = "1,2";
+		} else if (pricerange.equals("3")) {
+			pricerange = "1,2,3";
+		} else {
+			pricerange = "1,2,3,4";
+		}
+		
+		for(Activity removeactivity : updatingevent.getActivity())
+		{
+
+          for(Business removebusiness : removeactivity.getBusiness())
+          {
+        	  brep.deleteById(removebusiness.getBusinessid());
+          }
+		}
+		for(Activity removeactivity : updatingevent.getActivity())
+		{
+		 arep.deleteById(removeactivity.getActivityid());
+		}
+		updatingevent.setActivity(null);
+		erep.save(updatingevent);
+		for (String c : category) {
+			bs = yfs.getBusinesses(event.getEventcity(), c, pricerange);
+			if(!bs.getBusinesses().isEmpty()) {
+			Activity activity = new Activity();
+			activity.setActivityname(c);
+			activity.setBusiness(bs.getBusinesses());
+			activitylist.add(activity);
+			activity.setEvent(updatingevent);
+			
+			arep.save(activity);
+			for (Business business : bs.getBusinesses()) {			
+				listofBusiness.add(business);
+				business.setActivity(activity);
+				brep.save(business);
+			}
+		}
+		}
+		erep.save(updatingevent);
+		model.addAttribute("groupinfo", groupinfo);
+		model.addAttribute("event", groupinfo.getEvents());
+		model.addAttribute("todayString", todayString);
+		model.addAttribute("userid",session.getAttribute("userid"));
+		model.addAttribute("username", session.getAttribute("username"));
+		return "groupinfo";
+	}
 
 }

@@ -53,79 +53,30 @@
 	<ul class="nav justify-content-center">
 		<li class="nav-item"><a class="nav-link" href="/index"><button
 					class="btn btn-danger mb-2" type="submit">Go Home</button></a></li>
+		  <li class="nav-item">
+    <a class="nav-link" href="/groupdetails/${groupinfo.getGroupid()}"><button class="btn btn-danger mb-2" type="submit">Go to group</button></a>
+  </li>
 		<li class="nav-item"><a class="nav-link" href="/logout"><button
 					class="btn btn-danger mb-2" type="submit">Logout</button></a></li>
 	</ul>
 
 	<h1 align="center">Welcome ${username}</h1>
-	<div class="row">
-		<div class="col-lg-4 col-md-4">
-			<h2>Group: ${groupinfo.getGroupname()}</h2>
-			<h4>Group Members</h4>
-			<ul>
-				<c:forEach var="member" items="${groupinfo.getUser()}">
-					<li>${member.getUsername()}</li>
-				</c:forEach>
-			</ul>
-			<h4>Add Members</h4>
-			<form method="post" action="/addmembers">
-			<div class="form-group">
-				<label for="email">Members(Enter group members email)</label>
-				<textarea class="form-control mb-2 mr-sm-2" name="email" rows="2" cols="40" required></textarea>
-				<input type="text" name="groupid" hidden=true
-					value="${groupinfo.getGroupid()}" /> 
-					<input class="btn btn-danger mb-2" type="submit" value="Add to Group">
-			</div>
-			</form>
-		</div>
-		<div class="col-lg-4 col-md-4">
-			<h2>Your Events</h2>
-
-			<table>
-				<thead>
-					<tr>
-						<th>Event</th>
-						<th>Date</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="e" items="${event}">
-						<tr>
-							<td><a
-								href="/eventdetails?event=${e.getEventid()}&group=${groupinfo.getGroupid()}">${e.getEventname()}</a></td>
-							<td>${e.getEventdate()}</td>
-							<c:if test="${e.getEventadmin() eq  userid}">
-								<td><a
-									href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"
-									onclick="if (!confirm('Are you sure you want to remove the event?')) return false;"><button
-											class="btn btn-danger mb-2" type="submit">Remove</button></a></td>
-								<td><a
-									href="/editevent?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"><button
-											class="btn btn-danger mb-2" type="submit">Edit</button></a></td>			
-							</c:if>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		
+	<div class="row">			
 			<div class="col-lg-4 col-md-4">
-			<h2>Create an Event</h2>
-				<form method="post" action="/createevent"
+			<h2>Edit an Event</h2>
+				<form method="post" action="/saveeventchanges"
 					onsubmit="return validate()">
 					<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
-
+                    <input hidden=true name="eventid" value="${event.getEventid()}">
 				<div class="form-group">
 
 					<label for="eventname">Event Name</label> 
-					<input class="form-control mb-2 mr-sm-2" type="text" name="eventname" required> <label
+					<input class="form-control mb-2 mr-sm-2" type="text" name="eventname" value="${event.eventname}" required> <label
 						for="eventdescription">Event Description</label>
-					<textarea class="form-control mb-2 mr-sm-2" name="eventdescription" rows="2" cols="40"></textarea>
+					<textarea class="form-control mb-2 mr-sm-2" value="${event.eventdescription}" name="eventdescription" rows="2" cols="40" ></textarea>
 					 <label for="eventdate">Event Date</label> 
 					 <input	class="form-control mb-2 mr-sm-2" type="date" placeholder="yyyy-mm-dd" min="${todayString}"
-						name="eventdate" required>
+						name="eventdate" value="${event.eventdate}" required>
 					<label for="pricerange">Price</label>
 					<select class="form-control mb-2 mr-sm-2" id="pricerange" name="pricerange" value="1" required>
 						<option value="1">$ - Inexpensive</option>
@@ -134,7 +85,7 @@
 						<option value="4">$$$$ - Ultra High End</option>
 					</select> 
 					<label for="eventcity">Choose a City:</label> 
-					<select class="form-control mb-2 mr-sm-2"	id="eventcity" name="eventcity">
+					<select class="form-control mb-2 mr-sm-2"	id="eventcity" value="${event.eventcity}" name="eventcity">
 						<option value="Chicago">Chicago</option>
 						<option value="Detroit">Detroit</option>
 						<option value="Los Angeles">Los Angeles</option>
@@ -161,7 +112,7 @@
 						
 					</div>
 					<input type="submit" class="btn btn-danger mb-2"
-						value="Create Event">
+						value="Save Changes">
 				</div>
 			</form>
 		</div>
