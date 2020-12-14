@@ -29,6 +29,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container">
 	<div class="row" align="center">
 		<div class="col-lg-12">
 			<img src="/images/logo.png">
@@ -36,13 +37,13 @@
 	</div>
 <ul class="nav justify-content-center">  
   <li class="nav-item">
-    <a class="nav-link" href="/index"><button class="btn btn-primary mb-2" type="submit">Go Home</button></a>
+    <a class="nav-link" href="/index"><button class="btn btn-danger mb-2" type="submit">Go Home</button></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/groupdetails/${groupid}"><button class="btn btn-primary mb-2" type="submit">Go to group</button></a>
+    <a class="nav-link" href="/groupdetails/${groupid}"><button class="btn btn-danger mb-2" type="submit">Go to group</button></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/logout"><button class="btn btn-primary mb-2" type="submit">Logout</button></a>
+    <a class="nav-link" href="/logout"><button class="btn btn-danger mb-2" type="submit">Logout</button></a>
   </li>   
 </ul>
 
@@ -67,7 +68,7 @@
 			</c:forEach>
 		</select> <input type="text" name="groupid" hidden=true value="${groupid}" />
 		<input type="number" name="eventid" value="${event.getEventid()}"
-			hidden=true /> <input type="submit" class="btn btn-primary mb-2" value="List choice">
+			hidden=true /> <input type="submit" class="btn btn-danger mb-2" value="List choice">
 	</form>
 	</div>
 	<form method="post" action="/savevotes">
@@ -77,12 +78,11 @@
 			value="${selectedactivity.getActivityid()}" hidden=true />
 		<c:if test="${not empty businesses}">
 			<div class="businesslist">
-				<table id="businesslist">
+				<table align="center" id="businesslist">
 					<thead>
 						<tr>
 							<th></th>
-							<th><c:out
-									value="${fn:toUpperCase(selectedactivity.activityname)}"></c:out></th>
+							<th></th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -111,11 +111,14 @@
 					</tbody>
 				</table>
 			</div>
+			<div align="center">
 			<c:if test="${empty message}">
-				<input class="btn btn-primary mb-2" type="submit" value="Save votes" />
+				<input class="btn btn-danger mb-2" type="submit" value="Save votes" />
 			</c:if>
+			</div>
 		</c:if>
 	</form>
+	</div>
 </body>
 </html>
 

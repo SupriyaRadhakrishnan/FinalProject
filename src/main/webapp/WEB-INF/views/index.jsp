@@ -29,43 +29,47 @@
 </head>
 <body>
 	<div class="row" align="center">
-		<div class="col-lg-12">
+		<div class="col-lg-12 col-md-12">
 			<img src="/images/logo.png">
 		</div>
 	</div>
 
-<ul class="nav justify-content-center">   
-  <li class="nav-item">
-    <a class="nav-link" href="/logout"><button class="btn btn-primary mb-2" type="submit">Logout</button></a>
-  </li>   
-</ul>
-	
+	<ul class="nav justify-content-center">
+		<li class="nav-item"><a class="nav-link" href="/logout"><button
+					class="btn btn-danger mb-2" type="submit">Logout</button></a></li>
+	</ul>
+
 
 	<h1 align="center">Welcome ${username}</h1>
 	<br />
 	<div class="row">
-	<div class="col-lg-6 col-md-6">
-	<h2 align="center">Your Groups</h2>
-	<c:forEach var="group" items="${groups}">
-		<div align="center">
-			<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a>
-			<a href="/leavegroup/${group.getGroupid()}"
-				onclick="if (!confirm('Are you sure you want to leave the group?')) return false;"><button class="btn btn-primary mb-2"
-					type="submit">Leave Group</button></a>
+		<div class="col-lg-6 col-md-6">
+			<h2 align="center">Your Groups</h2>
+			<c:forEach var="group" items="${groups}">
+				<div align="center">
+					<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a>
+					<a href="/leavegroup/${group.getGroupid()}"
+						onclick="if (!confirm('Are you sure you want to leave the group?')) return false;"><button
+							class="btn btn-danger mb-2" type="submit">Leave Group</button></a>
+				</div>
+				<br />
+			</c:forEach>
 		</div>
-		<br />
-	</c:forEach>
-	</div>
-	<div class="col-lg-6 col-md-6">
-	<form method="post" action="/creategroup">
-		<h2>Create a Group</h2>
-		<label for="groupname">Group Name</label> <input type="text"
-			name="groupname" required><br /> <label for="email">Members(Enter
-			group members email)</label>
-		<textarea name="email" rows="4" cols="50" required></textarea>
-		<br /> <input class="btn btn-primary mb-2" type="submit" value="Create group">
-	</form>
-	</div>
+		<div class="col-lg-6 col-md-6">
+			<h2>Create a Group</h2>
+			<form method="post" action="/creategroup">
+				<div class="form-group">
+					<label for="groupname">Group Name</label> 
+					<input style="width: 400px"
+						class="form-control" type="text" name="groupname" required>
+					<label for="email">Members(Enter group members email)</label>
+					<textarea style="width: 400px" class="form-control mb-2 mr-sm-2" name="email" rows="2"
+						cols="40" required></textarea>
+					<input  class="btn btn-danger mb-2" type="submit"
+						value="Create group">
+				</div>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

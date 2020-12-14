@@ -25,33 +25,40 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container">
 	<div class="row" align="center">
 		<div class="col-lg-12">
 			<img src="/images/logo.png">
 		</div>
-	</div>
-	<div class="col-lg-12" align="center">
-		<h1>Register</h1>
+	</div>	
+	<div align="center">
+		<p style="width: 400px">Meet Me There is for anyone that wants to
+			go on a group vacation or a dinner with friends.</p>
+		<p style="width: 400px">Create groups, add your friends and vote
+			on your most favorite or least favorite place.</p>
+		<p style="width: 400px">Make planning easier and make decisions
+			faster and smarter. We hope you will meet us there!</p>
 	</div>
 	<p align="center">${message}</p>
 	<div class="col-lg-12" align="center">
 		<form method="post" action="/register">
-			<div class="form-group w-25">
+			<div class="form-group">
 				<label for="username">Name</label> <input type="text"
-					class="form-control" placeholder="Enter name" name="username"
+					class="form-control" style="width: 400px" placeholder="Enter name" name="username"
 					required> <label for="email">Email</label> <input
-					type="email" class="form-control" placeholder="Enter email"
+					type="email" style="width: 400px" class="form-control" placeholder="Enter email"
 					name="email" required> <label for="password"
 					class="mr-sm-2">Password</label> <input
-					class="form-control mb-2 mr-sm-2" placeholder="Password"
-					type="password" name="password" required> <input
-					type="submit" class="btn btn-primary mb-2" value="Register">
-				</div>
+					class="form-control mb-2 mr-sm-2" style="width: 400px" placeholder="Password"
+					type="password" style="width: 400px" name="password" required> <input
+					type="submit" class="btn btn-danger mb-2" value="Register">
+			</div>
 		</form>
-		</div>
-		<div class="col-lg-12" align="center">
-			<a href="/"><button class="btn btn-primary mb-2">Back to
-					Login</button></a>
-		</div>
+	</div>
+	<div class="col-lg-12" align="center">
+		<a href="/"><button class="btn btn-danger mb-2">Back to
+				Login</button></a>
+	</div>
+	</div>
 </body>
 </html>

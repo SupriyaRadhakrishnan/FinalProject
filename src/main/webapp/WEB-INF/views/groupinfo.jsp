@@ -44,6 +44,7 @@
 </script>
 </head>
 <body>
+<div class="container">
 	<div class="row" align="center">
 		<div class="col-lg-12">
 			<img src="/images/logo.png">
@@ -51,9 +52,9 @@
 	</div>
 	<ul class="nav justify-content-center">
 		<li class="nav-item"><a class="nav-link" href="/index"><button
-					class="btn btn-primary mb-2" type="submit">Go Home</button></a></li>
+					class="btn btn-danger mb-2" type="submit">Go Home</button></a></li>
 		<li class="nav-item"><a class="nav-link" href="/logout"><button
-					class="btn btn-primary mb-2" type="submit">Logout</button></a></li>
+					class="btn btn-danger mb-2" type="submit">Logout</button></a></li>
 	</ul>
 
 	<h1 align="center">Welcome ${username}</h1>
@@ -68,13 +69,13 @@
 			</ul>
 			<h4>Add Members</h4>
 			<form method="post" action="/addmembers">
-			<div class="form-group w-25">
+			<div class="form-group">
 				<label for="email">Members(Enter group members email)</label>
-				<textarea name="email" rows="4" cols="50" required></textarea>
+				<textarea class="form-control mb-2 mr-sm-2" style="width: 400px" name="email" rows="2" cols="40" required></textarea>
 				<input type="text" name="groupid" hidden=true
-					value="${groupinfo.getGroupid()}" /> <br /> <input
-					class="btn btn-primary mb-2" type="submit" value="Add to Group">
-					</div>
+					value="${groupinfo.getGroupid()}" /> 
+					<input class="btn btn-danger mb-2" type="submit" value="Add to Group">
+			</div>
 			</form>
 		</div>
 		<div class="col-lg-4 col-md-4">
@@ -98,7 +99,7 @@
 								<td><a
 									href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"
 									onclick="if (!confirm('Are you sure you want to remove the event?')) return false;"><button
-											class="btn btn-primary mb-2" type="submit">Remove</button></a></td>
+											class="btn btn-danger mb-2" type="submit">Remove</button></a></td>
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -112,22 +113,24 @@
 					onsubmit="return validate()">
 					<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
 
-<div class="form-group">
+				<div class="form-group">
 
-					<label for="eventname">Event Name</label> <input type="text"
-						name="eventname" required><br /> <label
+					<label for="eventname">Event Name</label> 
+					<input class="form-control mb-2 mr-sm-2" type="text" name="eventname" required> <label
 						for="eventdescription">Event Description</label>
-					<textarea name="eventdescription" rows="4" cols="50"></textarea>
-					<br /> <label for="eventdate">Event Date</label> <input
-						type="date" placeholder="yyyy-mm-dd" min="${todayString }"
-						name="eventdate" required><br /> <label for="pricerange">Price</label>
-					<select id="pricerange" name="pricerange" value="1" required>
+					<textarea class="form-control mb-2 mr-sm-2" style="width: 400px" name="eventdescription" rows="2" cols="40"></textarea>
+					 <label for="eventdate">Event Date</label> 
+					 <input	class="form-control mb-2 mr-sm-2" type="date" placeholder="yyyy-mm-dd" min="${todayString}"
+						name="eventdate" required>
+					<label for="pricerange">Price</label>
+					<select class="form-control mb-2 mr-sm-2" id="pricerange" name="pricerange" value="1" required>
 						<option value="1">$ - Inexpensive</option>
 						<option value="2">$$ - Moderate</option>
 						<option value="3">$$$ - Pricey</option>
 						<option value="4">$$$$ - Ultra High End</option>
-					</select> <label for="eventcity">Choose a City:</label> <select
-						id="eventcity" name="eventcity">
+					</select> 
+					<label for="eventcity">Choose a City:</label> 
+					<select class="form-control mb-2 mr-sm-2"	id="eventcity" name="eventcity">
 						<option value="Chicago">Chicago</option>
 						<option value="Detroit">Detroit</option>
 						<option value="Los Angeles">Los Angeles</option>
@@ -138,19 +141,26 @@
 						<option value="Washington DC">Washington DC</option>
 					</select>
 					<div id="category_checkbox">
-						<label for="category">Event Category:</label> <input
-							type="checkbox" id="restaurants" value="restaurants"
-							name="category"> <label for="restaurants">Restaurants</label>
+						<label for="category">Event Category:</label>
+						<label for="restaurants">Restaurants</label> 
+						<input type="checkbox" id="restaurants" value="restaurants"
+							name="category"> 
+						
+						<label for="parks">Parks</label>
 						<input type="checkbox" id="parks" value="parks" name="category">
-						<label for="parks">Parks</label> <input type="checkbox" id="tours"
-							value="tours" name="category"> <label for="tours">Tours</label>
-						<input type="checkbox" id="hotels" value="hotels" name="category">
+						
+						<label for="tours">Tours</label> 
+						<input type="checkbox" id="tours" value="tours" name="category"> 
+						
 						<label for="hotels">Hotels</label>
+						<input type="checkbox" id="hotels" value="hotels" name="category">
+						
 					</div>
-					<input type="submit" class="btn btn-primary mb-2"
+					<input type="submit" class="btn btn-danger mb-2"
 						value="Create Event">
-						</div>
-				</form>
-			</div>
+				</div>
+			</form>
+		</div>
+		</div>
 </body>
 </html>
