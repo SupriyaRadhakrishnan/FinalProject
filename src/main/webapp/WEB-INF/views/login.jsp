@@ -39,7 +39,7 @@
 			or least favorite place.</p>
 		<p style="width: 400px">Make planning easier and make decisions faster and smarter. We
 			hope you will meet us there!</p>
-		<p>${message}</p>
+		<p style="color: red">${message}</p>
 	</div>
 
 

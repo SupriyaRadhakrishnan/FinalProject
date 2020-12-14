@@ -39,7 +39,7 @@
 		<p style="width: 400px">Make planning easier and make decisions
 			faster and smarter. We hope you will meet us there!</p>
 	</div>
-	<p align="center">${message}</p>
+	<p align="center" style="color: red">${message}</p>
 	<div class="col-lg-12" align="center">
 		<form method="post" action="/register">
 			<div class="form-group">
