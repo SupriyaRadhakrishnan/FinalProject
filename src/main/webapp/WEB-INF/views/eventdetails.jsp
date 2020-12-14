@@ -53,6 +53,7 @@
 	
 	<h1 align="center">Welcome ${username}</h1>
 	<h2 align="center">Event: ${fn:toUpperCase(event.getEventname())}</h2>
+	<p align="center">${event.getEventdescription()}</p>
 	<h3 align="center">${message}</h3>
 	<input type="text" name="groupid" hidden=true value="${groupid}" />
 	<input type="number" name="eventid" value="${event.getEventid()}"

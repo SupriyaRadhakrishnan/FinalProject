@@ -58,7 +58,7 @@
 
 	<h1 align="center">Welcome ${username}</h1>
 	<div class="row">
-		<div class="col-lg-6 col-md-6">
+		<div class="col-lg-4 col-md-4">
 			<h2>Group: ${groupinfo.getGroupname()}</h2>
 			<h4>Group Members</h4>
 			<ul>
@@ -68,14 +68,16 @@
 			</ul>
 			<h4>Add Members</h4>
 			<form method="post" action="/addmembers">
+			<div class="form-group w-25">
 				<label for="email">Members(Enter group members email)</label>
 				<textarea name="email" rows="4" cols="50" required></textarea>
 				<input type="text" name="groupid" hidden=true
 					value="${groupinfo.getGroupid()}" /> <br /> <input
 					class="btn btn-primary mb-2" type="submit" value="Add to Group">
+					</div>
 			</form>
 		</div>
-		<div class="col-lg-6 col-md-6">
+		<div class="col-lg-4 col-md-4">
 			<h2>Your Events</h2>
 
 			<table>
@@ -103,16 +105,14 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="row" align="center">
 		
-		
-			<div class="col-lg-12 col-md-12">
+			<div class="col-lg-4 col-md-4">
 			<h2>Create an Event</h2>
 				<form method="post" action="/createevent"
 					onsubmit="return validate()">
 					<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
 
-
+<div class="form-group">
 
 					<label for="eventname">Event Name</label> <input type="text"
 						name="eventname" required><br /> <label
@@ -149,8 +149,8 @@
 					</div>
 					<input type="submit" class="btn btn-primary mb-2"
 						value="Create Event">
+						</div>
 				</form>
 			</div>
-		</div>
 </body>
 </html>
