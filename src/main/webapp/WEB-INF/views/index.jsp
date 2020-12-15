@@ -28,6 +28,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container">
 	<div class="row" align="center">
 		<div class="col-lg-12 col-md-12">
 			<img src="/images/logo.png">
@@ -82,5 +83,6 @@
 			</form>
 		</div>
 	</div>
+</div>
 </body>
 </html>
