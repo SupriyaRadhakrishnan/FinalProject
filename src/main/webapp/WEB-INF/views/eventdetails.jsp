@@ -93,7 +93,7 @@
 											value="${business.name}">
 									</c:if><br />Votes :${business.favourite}</td>
 								<td><img src="${business.image_url}" alt="Business Picture"
-									width="200" height="200" /><br /><a href="${business.url}">${business.name}</a></td>
+									width="200" height="200" /><br /><a href="${business.url}" target="_blank">${business.name}</a></td>
 								<td><label
 									for="${selectedactivity.activityname}_notfavorite">Least
 										Favorite </label> <c:if test="${empty message}">

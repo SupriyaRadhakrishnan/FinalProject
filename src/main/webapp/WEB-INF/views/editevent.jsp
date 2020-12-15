@@ -44,79 +44,81 @@
 </script>
 </head>
 <body>
-<div class="container">
-	<div class="row" align="center">
-		<div class="col-lg-12">
-			<img src="/images/logo.png">
+	<div class="container">
+		<div class="row" align="center">
+			<div class="col-lg-12">
+				<img src="/images/logo.png">
+			</div>
 		</div>
-	</div>
-	<ul class="nav justify-content-center">
-		<li class="nav-item"><a class="nav-link" href="/index"><button
-					class="btn btn-danger mb-2" type="submit">Go Home</button></a></li>
-		  <li class="nav-item">
-    <a class="nav-link" href="/groupdetails/${groupinfo.getGroupid()}"><button class="btn btn-danger mb-2" type="submit">Go to group</button></a>
-  </li>
-		<li class="nav-item"><a class="nav-link" href="/logout"><button
-					class="btn btn-danger mb-2" type="submit">Logout</button></a></li>
-	</ul>
+		<ul class="nav justify-content-center">
+			<li class="nav-item"><a class="nav-link" href="/index"><button
+						class="btn btn-danger mb-2" type="submit">Go Home</button></a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/groupdetails/${groupinfo.getGroupid()}"><button
+						class="btn btn-danger mb-2" type="submit">Go to group</button></a></li>
+			<li class="nav-item"><a class="nav-link" href="/logout"><button
+						class="btn btn-danger mb-2" type="submit">Logout</button></a></li>
+		</ul>
 
-	<h1 align="center">Welcome ${username}</h1>
-	<div class="row">			
+		<h1 align="center">Welcome ${username}</h1>
+		<div class="row">
 			<div class="col-lg-4 col-md-4">
-			<h2>Edit an Event</h2>
+				<h2>Edit an Event</h2>
 				<form method="post" action="/saveeventchanges"
 					onsubmit="return validate()">
 					<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
-                    <input hidden=true name="eventid" value="${event.getEventid()}">
-				<div class="form-group">
+					<input hidden=true name="eventid" value="${event.getEventid()}">
+					<div class="form-group">
 
-					<label for="eventname">Event Name</label> 
-					<input class="form-control mb-2 mr-sm-2" type="text" name="eventname" value="${event.eventname}" required> <label
-						for="eventdescription">Event Description</label>
-					<textarea class="form-control mb-2 mr-sm-2" value="${event.eventdescription}" name="eventdescription" rows="2" cols="40" ></textarea>
-					 <label for="eventdate">Event Date</label> 
-					 <input	class="form-control mb-2 mr-sm-2" type="date" placeholder="yyyy-mm-dd" min="${todayString}"
-						name="eventdate" value="${event.eventdate}" required>
-					<label for="pricerange">Price</label>
-					<select class="form-control mb-2 mr-sm-2" id="pricerange" name="pricerange" value="1" required>
-						<option value="1">$ - Inexpensive</option>
-						<option value="2">$$ - Moderate</option>
-						<option value="3">$$$ - Pricey</option>
-						<option value="4">$$$$ - Ultra High End</option>
-					</select> 
-					<label for="eventcity">Choose a City:</label> 
-					<select class="form-control mb-2 mr-sm-2"	id="eventcity" value="${event.eventcity}" name="eventcity">
-						<option value="Chicago">Chicago</option>
-						<option value="Detroit">Detroit</option>
-						<option value="Los Angeles">Los Angeles</option>
-						<option value="Miami">Miami</option>
-						<option value="New York City">New York City</option>
-						<option value="Seattle">Seattle</option>
-						<option value="Toronto">Toronto</option>
-						<option value="Washington DC">Washington DC</option>
-					</select>
-					<div id="category_checkbox">
-						<p>Event Category</p>	
-						<label for="restaurants">Restaurants</label> 
-						<input type="checkbox" id="restaurants" value="restaurants"
-							name="category"> 
-						
-						<label for="parks">Parks</label>
-						<input type="checkbox" id="parks" value="parks" name="category">
-						
-						<label for="tours">Tours</label> 
-						<input type="checkbox" id="tours" value="tours" name="category"> 
-						
-						<label for="hotels">Hotels</label>
-						<input type="checkbox" id="hotels" value="hotels" name="category">
-						
+						<label for="eventname">Event Name</label> <input
+							class="form-control mb-2 mr-sm-2" type="text" name="eventname"
+							maxlength="100" value="${event.eventname}" required> <label
+							for="eventdescription">Event Description</label>
+						<textarea class="form-control mb-2 mr-sm-2"
+							value="${event.eventdescription}" name="eventdescription"
+							rows="2" cols="40"></textarea>
+						<label for="eventdate">Event Date</label> <input
+							class="form-control mb-2 mr-sm-2" type="date"
+							placeholder="yyyy-mm-dd" min="${todayString}" name="eventdate"
+							value="${event.eventdate}" required> <label
+							for="pricerange">Price</label> <select
+							class="form-control mb-2 mr-sm-2" id="pricerange"
+							name="pricerange" value="1" required>
+							<option value="1">$ - Inexpensive</option>
+							<option value="2">$$ - Moderate</option>
+							<option value="3">$$$ - Pricey</option>
+							<option value="4">$$$$ - Ultra High End</option>
+						</select> <label for="eventcity">Choose a City:</label> <select
+							class="form-control mb-2 mr-sm-2" id="eventcity"
+							value="${event.eventcity}" name="eventcity">
+							<option value="Chicago">Chicago</option>
+							<option value="Detroit">Detroit</option>
+							<option value="Los Angeles">Los Angeles</option>
+							<option value="Miami">Miami</option>
+							<option value="New York City">New York City</option>
+							<option value="Seattle">Seattle</option>
+							<option value="Toronto">Toronto</option>
+							<option value="Washington DC">Washington DC</option>
+						</select>
+						<div id="category_checkbox">
+							<p>Event Category</p>
+							<label for="restaurants">Restaurants</label> <input
+								type="checkbox" id="restaurants" value="restaurants"
+								name="category"> <label for="parks">Parks</label> <input
+								type="checkbox" id="parks" value="parks" name="category">
+
+							<label for="tours">Tours</label> <input type="checkbox"
+								id="tours" value="tours" name="category"> <label
+								for="hotels">Hotels</label> <input type="checkbox" id="hotels"
+								value="hotels" name="category">
+
+						</div>
+						<input type="submit" class="btn btn-danger mb-2"
+							value="Save Changes">
 					</div>
-					<input type="submit" class="btn btn-danger mb-2"
-						value="Save Changes">
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-		</div>
-		</div>
+	</div>
 </body>
 </html>

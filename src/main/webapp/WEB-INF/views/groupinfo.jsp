@@ -44,128 +44,128 @@
 </script>
 </head>
 <body>
-<div class="container">
-	<div class="row" align="center">
-		<div class="col-lg-12">
-			<img src="/images/logo.png">
-		</div>
-	</div>
-	<ul class="nav justify-content-center">
-		<li class="nav-item"><a class="nav-link" href="/index"><button
-					class="btn btn-danger mb-2" type="submit">Go Home</button></a></li>
-		<li class="nav-item"><a class="nav-link" href="/logout"><button
-					class="btn btn-danger mb-2" type="submit">Logout</button></a></li>
-	</ul>
-
-	<h1 align="center">Welcome ${username}</h1>
-	<div class="row">
-		<div class="col-lg-4 col-md-4">
-			<h2>Group: ${groupinfo.getGroupname()}</h2>
-			<h4>Group Members</h4>
-			<ul>
-				<c:forEach var="member" items="${groupinfo.getUser()}">
-					<li>${member.getUsername()}</li>
-				</c:forEach>
-			</ul>
-			<h4>Add Members</h4>
-			<form method="post" action="/addmembers">
-			<div class="form-group">
-				<label for="email">Members(Enter group members email)</label>
-				<textarea class="form-control mb-2 mr-sm-2" name="email" rows="2" cols="40" required></textarea>
-				<input type="text" name="groupid" hidden=true
-					value="${groupinfo.getGroupid()}" /> 
-					<input class="btn btn-danger mb-2" type="submit" value="Add to Group">
+	<div class="container">
+		<div class="row" align="center">
+			<div class="col-lg-12">
+				<img src="/images/logo.png">
 			</div>
-			</form>
 		</div>
-		<div class="col-lg-4 col-md-4">
-			<h2>Your Events</h2>
+		<ul class="nav justify-content-center">
+			<li class="nav-item"><a class="nav-link" href="/index"><button
+						class="btn btn-danger mb-2" type="submit">Go Home</button></a></li>
+			<li class="nav-item"><a class="nav-link" href="/logout"><button
+						class="btn btn-danger mb-2" type="submit">Logout</button></a></li>
+		</ul>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Event</th>
-						<th>Date</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="e" items="${event}">
-						<tr>
-							<td><a
-								href="/eventdetails?event=${e.getEventid()}&group=${groupinfo.getGroupid()}">${e.getEventname()}</a></td>
-							<td>${e.getEventdate()}</td>
-							<c:if test="${e.getEventadmin() eq  userid}">
-								<td><a
-									href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"
-									onclick="if (!confirm('Are you sure you want to remove the event?')) return false;"><button
-											class="btn btn-danger mb-2" type="submit">Remove</button></a></td>
-								<td><a
-									href="/editevent?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"><button
-											class="btn btn-danger mb-2" type="submit">Edit</button></a></td>			
-							</c:if>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		
+		<h1 align="center">Welcome ${username}</h1>
+		<div class="row">
 			<div class="col-lg-4 col-md-4">
-			<h2>Create an Event</h2>
+				<h2>Group: ${groupinfo.getGroupname()}</h2>
+				<h4>Group Members</h4>
+				<ul>
+					<c:forEach var="member" items="${groupinfo.getUser()}">
+						<li>${member.getUsername()}</li>
+					</c:forEach>
+				</ul>
+				<h4>Add Members</h4>
+				<form method="post" action="/addmembers">
+					<div class="form-group">
+						<label for="email">Members(Enter group members email)</label>
+						<textarea class="form-control mb-2 mr-sm-2" name="email" rows="2"
+							cols="40" required></textarea>
+						<input type="text" name="groupid" hidden=true
+							value="${groupinfo.getGroupid()}" /> <input
+							class="btn btn-danger mb-2" type="submit" value="Add to Group">
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-4 col-md-4">
+				<h2>Your Events</h2>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Event</th>
+							<th>Date</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="e" items="${event}">
+							<tr>
+								<td><a
+									href="/eventdetails?event=${e.getEventid()}&group=${groupinfo.getGroupid()}">${e.getEventname()}</a></td>
+								<td>${e.getEventdate()}</td>
+								<c:if test="${e.getEventadmin() eq  userid}">
+									<td><a
+										href="/delete?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"
+										onclick="if (!confirm('Are you sure you want to remove the event?')) return false;"><button
+												class="btn btn-danger mb-2" type="submit">Remove</button></a></td>
+									<td><a
+										href="/editevent?eventdetails=${e.getEventid()}&group=${groupinfo.getGroupid()}"><button
+												class="btn btn-danger mb-2" type="submit">Edit</button></a></td>
+								</c:if>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-lg-4 col-md-4">
+				<h2>Create an Event</h2>
 				<form method="post" action="/createevent"
 					onsubmit="return validate()">
 					<input hidden=true name="groupid" value="${groupinfo.getGroupid()}">
 
-				<div class="form-group">
+					<div class="form-group">
 
-					<label for="eventname">Event Name</label> 
-					<input class="form-control mb-2 mr-sm-2" type="text" name="eventname" required> <label
-						for="eventdescription">Event Description</label>
-					<textarea class="form-control mb-2 mr-sm-2" name="eventdescription" rows="2" cols="40"></textarea>
-					 <label for="eventdate">Event Date</label> 
-					 <input	class="form-control mb-2 mr-sm-2" type="date" placeholder="yyyy-mm-dd" min="${todayString}"
-						name="eventdate" required>
-					<label for="pricerange">Price</label>
-					<select class="form-control mb-2 mr-sm-2" id="pricerange" name="pricerange" value="1" required>
-						<option value="1">$ - Inexpensive</option>
-						<option value="2">$$ - Moderate</option>
-						<option value="3">$$$ - Pricey</option>
-						<option value="4">$$$$ - Ultra High End</option>
-					</select> 
-					<label for="eventcity">Choose a City:</label> 
-					<select class="form-control mb-2 mr-sm-2"	id="eventcity" name="eventcity">
-						<option value="Chicago">Chicago</option>
-						<option value="Detroit">Detroit</option>
-						<option value="Los Angeles">Los Angeles</option>
-						<option value="Miami">Miami</option>
-						<option value="New York City">New York City</option>
-						<option value="Seattle">Seattle</option>
-						<option value="Toronto">Toronto</option>
-						<option value="Washington DC">Washington DC</option>
-					</select>
-					<div id="category_checkbox">
-						<p>Event Category</p>	
-						<label for="restaurants">Restaurants</label> 
-						<input type="checkbox" id="restaurants" value="restaurants"
-							name="category"> 
-						
-						<label for="parks">Parks</label>
-						<input type="checkbox" id="parks" value="parks" name="category">
-						
-						<label for="tours">Tours</label> 
-						<input type="checkbox" id="tours" value="tours" name="category"> 
-						
-						<label for="hotels">Hotels</label>
-						<input type="checkbox" id="hotels" value="hotels" name="category">
-						
+						<label for="eventname">Event Name</label> <input
+							class="form-control mb-2 mr-sm-2" type="text" name="eventname"
+							maxlength="100" required> <label for="eventdescription">Event
+							Description</label>
+						<textarea class="form-control mb-2 mr-sm-2"
+							name="eventdescription" maxlength="100" rows="2" cols="40"></textarea>
+						<label for="eventdate">Event Date</label> <input
+							class="form-control mb-2 mr-sm-2" type="date"
+							placeholder="yyyy-mm-dd" min="${todayString}" name="eventdate"
+							required> <label for="pricerange">Price</label> <select
+							class="form-control mb-2 mr-sm-2" id="pricerange"
+							name="pricerange" value="1" required>
+							<option value="1">$ - Inexpensive</option>
+							<option value="2">$$ - Moderate</option>
+							<option value="3">$$$ - Pricey</option>
+							<option value="4">$$$$ - Ultra High End</option>
+						</select> <label for="eventcity">Choose a City:</label> <select
+							class="form-control mb-2 mr-sm-2" id="eventcity" name="eventcity">
+							<option value="Chicago">Chicago</option>
+							<option value="Detroit">Detroit</option>
+							<option value="Los Angeles">Los Angeles</option>
+							<option value="Miami">Miami</option>
+							<option value="New York City">New York City</option>
+							<option value="Seattle">Seattle</option>
+							<option value="Toronto">Toronto</option>
+							<option value="Washington DC">Washington DC</option>
+						</select>
+						<div id="category_checkbox">
+							<p>Event Category</p>
+							<label for="restaurants">Restaurants</label> <input
+								type="checkbox" id="restaurants" value="restaurants"
+								name="category"> <label for="parks">Parks</label> <input
+								type="checkbox" id="parks" value="parks" name="category">
+
+							<label for="tours">Tours</label> <input type="checkbox"
+								id="tours" value="tours" name="category"> <label
+								for="hotels">Hotels</label> <input type="checkbox" id="hotels"
+								value="hotels" name="category">
+
+						</div>
+						<input type="submit" class="btn btn-danger mb-2"
+							value="Create Event">
 					</div>
-					<input type="submit" class="btn btn-danger mb-2"
-						value="Create Event">
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-		</div>
-		</div>
+	</div>
 </body>
 </html>
