@@ -70,10 +70,10 @@
 				<h4>Add Members</h4>
 				<form method="post" action="/addmembers">
 					<div class="form-group">
-						<label for="email">Members(Enter group members email)</label>
-						<textarea class="form-control mb-2 mr-sm-2" name="email" rows="2"
+						<label for="email">Group Members</label>
+						<textarea class="form-control mb-2 mr-sm-2" placeholder="someone@example.com;something@example.com" name="email" rows="2"
 							cols="40" required></textarea>
-						<input type="text" name="groupid" hidden=true
+						<input type="text" name="groupid" hidden=true 
 							value="${groupinfo.getGroupid()}" /> <input
 							class="btn btn-danger mb-2" type="submit" value="Add to Group">
 					</div>
