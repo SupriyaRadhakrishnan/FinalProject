@@ -45,15 +45,26 @@
 	<div class="row">
 		<div class="col-lg-6 col-md-6">
 			<h2 align="center">Your Groups</h2>
+			<div align="center">
+			<table>
+			<thead>
+			<tr>
+			<th></th>
+			<th></th>
+			</tr>
+			</thead>
+			<tbody>
 			<c:forEach var="group" items="${groups}">
-				<div align="center">
-					<a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a>
-					<a href="/leavegroup/${group.getGroupid()}"
+			<tr>
+			<td><a href="/groupdetails/${group.getGroupid()}">${group.getGroupname()}</a></td>
+			<td><a href="/leavegroup/${group.getGroupid()}"
 						onclick="if (!confirm('Are you sure you want to leave the group?')) return false;"><button
-							class="btn btn-danger mb-2" type="submit">Leave Group</button></a>
-				</div>
-				<br />
+							class="btn btn-danger mb-2" type="submit">Leave Group</button></a></td>
+			</tr>
 			</c:forEach>
+			</tbody>
+			</table>
+			</div>
 		</div>
 		<div class="col-lg-6 col-md-6">
 			<h2>Create a Group</h2>
