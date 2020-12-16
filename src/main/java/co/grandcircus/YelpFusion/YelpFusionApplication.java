@@ -9,6 +9,7 @@ public class YelpFusionApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(YelpFusionApplication.class, args);
+		System.out.println("MMT RUN");
 	}
 
 }

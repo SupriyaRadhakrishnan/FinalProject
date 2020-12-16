@@ -18,6 +18,9 @@ public class YelpFusionService {
 
 	public BusinessResponse getBusinesses(String location, String categories, String pricerange) {
 
+	System.out.println("apikey " + apikey);	
+	System.out.println(" System get env: " + System.getenv("APIKEY"));
+		
 		String url = "https://api.yelp.com/v3/businesses/search?&location={location}&radius=40000&price={pricerange}";
 		if (!categories.isEmpty()) {
 			url += "&categories={categories}";
