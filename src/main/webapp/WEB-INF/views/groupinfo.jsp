@@ -81,7 +81,8 @@
 			</div>
 			<div class="col-lg-4 col-md-4">
 				<h2>Your Events</h2>
-
+				<c:choose>
+<c:when test="${fn:length(event) gt 0}">
 				<table>
 					<thead>
 						<tr>
@@ -110,6 +111,11 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				</c:when>
+				<c:otherwise>
+				<p>No Events</p>
+				</c:otherwise>
+				</c:choose>
 			</div>
 
 			<div class="col-lg-4 col-md-4">

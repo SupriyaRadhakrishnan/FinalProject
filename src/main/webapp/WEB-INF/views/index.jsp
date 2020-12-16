@@ -47,6 +47,8 @@
 		<div class="col-lg-6 col-md-6">
 			<h2 align="center">Your Groups</h2>
 			<div align="center">
+							<c:choose>
+<c:when test="${fn:length(groups) gt 0}">
 			<table>
 			<thead>
 			<tr>
@@ -65,6 +67,11 @@
 			</c:forEach>
 			</tbody>
 			</table>
+			</c:when>
+				<c:otherwise>
+				<p>Not a member of any group</p>
+				</c:otherwise>
+			</c:choose>
 			</div>
 		</div>
 		<div align="center" class="col-lg-6 col-md-6">
