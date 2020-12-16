@@ -31,7 +31,7 @@
 <div class="container">
 	<div class="row" align="center">
 		<div class="col-lg-12 col-md-12">
-			<img src="/images/logo.png">
+			<img alt="logo" src="/images/logo.png">
 		</div>
 	</div>
 
@@ -67,15 +67,15 @@
 			</table>
 			</div>
 		</div>
-		<div class="col-lg-6 col-md-6">
+		<div align="center" class="col-lg-6 col-md-6">
 			<h2>Create a Group</h2>
 			<form method="post" action="/creategroup">
 				<div class="form-group">
 					<label for="groupname">Group Name</label> <input
 						class="form-control mb-2 mr-sm-2" style="width: 50%" type="text"
 						name="groupname" maxlength="100" required> <label
-						for="email">Members(Enter group members email)</label>
-					<textarea style="width: 50%" class="form-control mb-2 mr-sm-2"
+						for="email">Group Members</label>
+					<textarea style="width: 50%" placeholder="someone@example.com;something@example.com" class="form-control mb-2 mr-sm-2"
 						name="email" rows="2" cols="40" required></textarea>
 					<input class="btn btn-danger mb-2" type="submit"
 						value="Create group">

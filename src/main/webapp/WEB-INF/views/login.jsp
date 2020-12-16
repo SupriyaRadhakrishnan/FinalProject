@@ -29,7 +29,7 @@
 <div class="container">
 	<div class="row" align="center">
 		<div class="col-lg-12 col-md-12">
-			<img src="/images/logo.png">
+			<img alt="logo" src="/images/logo.png">
 		</div>
 	</div>
 	<div align="center">
