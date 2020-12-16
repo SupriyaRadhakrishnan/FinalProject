@@ -12,14 +12,11 @@ import co.grandcircus.YelpFusion.Model.BusinessResponse;
 @Service
 public class YelpFusionService {
 
-	String apikey = System.getenv("APIKEY");
+	String apikey = getApiKey();
 
 	private RestTemplate rt = new RestTemplate();
 
 	public BusinessResponse getBusinesses(String location, String categories, String pricerange) {
-
-	System.out.println("apikey " + apikey);	
-	System.out.println(" System get env: " + System.getenv("APIKEY"));
 		
 		String url = "https://api.yelp.com/v3/businesses/search?&location={location}&radius=40000&price={pricerange}";
 		if (!categories.isEmpty()) {
@@ -33,4 +30,14 @@ public class YelpFusionService {
 		// System.out.println("response " + response);
 		return response;
 	}
+
+	private String getApiKey() {
+		String tempKey = System.getProperty("APIKEY");
+
+		if (tempKey == null) {
+			tempKey = System.getenv("APIKEY");
+		}
+		return tempKey;
+	}
+
 }
