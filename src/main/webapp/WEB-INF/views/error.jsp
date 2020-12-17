@@ -24,17 +24,16 @@
 <title>Meet Me There | Error</title>
 </head>
 <body>
-<div class="container">
-<div class="row" align="center">
+	<div class="container">
+		<div class="row" align="center">
 			<div class="col-lg-12">
-				<img src="/images/logo.png">
+				<img alt="logo" src="/images/logo.png">
 			</div>
-<h1>Oops!...Something went wrong</h1>
-<br />
-<a class="nav-link" href="/"><button
-						class="btn btn-danger mb-2" type="submit">Login</button></a> 
-						
-						</div>
-						</div>
+			<h1>Oops!...Something went wrong</h1>
+			<br /> <a class="nav-link" href="/"><button
+					class="btn btn-danger mb-2" type="submit">Login</button></a>
+
+		</div>
+	</div>
 </body>
 </html>
